@@ -1,0 +1,27 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    float: left;
+    background: #585858;
+    width: 100%;
+  }
+  .headerNav{
+    max-width: 90%;
+    padding: 2rem 0;
+  }
+  .headerLinks{
+    display: block;
+    margin-left: auto;
+    position: relative;
+    right: 0;
+    padding: 1rem 1rem;
+    font-size: 13px;
+  }
+
+  .logo{
+    letter-spacing: 1.2rem;
+    color:#ffffff;
+    line-height: 3.2rem;
+    margin-right: 5rem;
+  }
