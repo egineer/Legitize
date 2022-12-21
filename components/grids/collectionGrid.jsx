@@ -4,7 +4,7 @@ const CollectionGrid = ({collections})=>{
         {
             collections.map((collection,index)=>{
                 return(
-                    <article>
+                    <article key={index}>
                     <div
                       class="rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
                     >

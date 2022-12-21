@@ -1,37 +1,37 @@
 const CollectionsSection = ()=>{
 
     return(
-        <section class="relative py-16 md:py-24">
-        <picture class="pointer-events-none absolute inset-0 -z-10 dark:hidden">
-          <img src="/img/gradient_light.jpg" alt="gradient" class="h-full w-full" />
+        <section className="relative py-16 md:py-24">
+        <picture className="pointer-events-none absolute inset-0 -z-10 dark:hidden">
+          <img src="/img/gradient_light.jpg" alt="gradient" className="h-full w-full" />
         </picture>
-        <div class="container">
+        <div className="container">
 
-          <h2 class="py-16 text-center font-display text-4xl font-medium text-jacarta-700 dark:text-white">
+          <h2 className="py-16 text-center font-display text-4xl font-medium text-jacarta-700 dark:text-white">
             Explore Collections
           </h2>
 
           {/* <!-- Filters --> */}
-          <div class="mb-8 flex flex-wrap items-center justify-between">
-            <ul class="flex flex-wrap items-center">
-              <li class="my-1 mr-2.5">
+          <div className="mb-8 flex flex-wrap items-center justify-between">
+            <ul className="flex flex-wrap items-center">
+              <li className="my-1 mr-2.5">
                 <a
                   href="#"
-                  class="group flex h-9 items-center justify-center rounded-lg bg-jacarta-100 px-4 font-display text-sm font-semibold text-jacarta-700 transition-colors hover:border-transparent hover:bg-accent hover:text-white dark:bg-jacarta-700 dark:text-white dark:hover:bg-accent"
+                  className="group flex h-9 items-center justify-center rounded-lg bg-jacarta-100 px-4 font-display text-sm font-semibold text-jacarta-700 transition-colors hover:border-transparent hover:bg-accent hover:text-white dark:bg-jacarta-700 dark:text-white dark:hover:bg-accent"
                   >All</a
                 >
               </li>
-              <li class="my-1 mr-2.5">
+              <li className="my-1 mr-2.5">
                 <a
                   href="#"
-                  class="group flex h-9 items-center rounded-lg border border-jacarta-100 bg-white px-4 font-display text-sm font-semibold text-jacarta-500 transition-colors hover:border-transparent hover:bg-accent hover:text-white dark:border-jacarta-600 dark:bg-jacarta-900 dark:text-white dark:hover:border-transparent dark:hover:bg-accent dark:hover:text-white"
+                  className="group flex h-9 items-center rounded-lg border border-jacarta-100 bg-white px-4 font-display text-sm font-semibold text-jacarta-500 transition-colors hover:border-transparent hover:bg-accent hover:text-white dark:border-jacarta-600 dark:bg-jacarta-900 dark:text-white dark:hover:border-transparent dark:hover:bg-accent dark:hover:text-white"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     width="24"
                     height="24"
-                    class="mr-1 h-4 w-4 fill-jacarta-700 transition-colors group-hover:fill-white dark:fill-jacarta-100"
+                    className="mr-1 h-4 w-4 fill-jacarta-700 transition-colors group-hover:fill-white dark:fill-jacarta-100"
                   >
                     <path fill="none" d="M0 0h24v24H0z" />
                     <path
@@ -41,17 +41,17 @@ const CollectionsSection = ()=>{
                   <span>Art</span>
                 </a>
               </li>
-              <li class="my-1 mr-2.5">
+              <li className="my-1 mr-2.5">
                 <a
                   href="#"
-                  class="group flex h-9 items-center rounded-lg border border-jacarta-100 bg-white px-4 font-display text-sm font-semibold text-jacarta-500 transition-colors hover:border-transparent hover:bg-accent hover:text-white dark:border-jacarta-600 dark:bg-jacarta-900 dark:text-white dark:hover:border-transparent dark:hover:bg-accent dark:hover:text-white"
+                  className="group flex h-9 items-center rounded-lg border border-jacarta-100 bg-white px-4 font-display text-sm font-semibold text-jacarta-500 transition-colors hover:border-transparent hover:bg-accent hover:text-white dark:border-jacarta-600 dark:bg-jacarta-900 dark:text-white dark:hover:border-transparent dark:hover:bg-accent dark:hover:text-white"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     width="24"
                     height="24"
-                    class="mr-1 h-4 w-4 fill-jacarta-700 transition-colors group-hover:fill-white dark:fill-jacarta-100"
+                    className="mr-1 h-4 w-4 fill-jacarta-700 transition-colors group-hover:fill-white dark:fill-jacarta-100"
                   >
                     <path fill="none" d="M0 0h24v24H0z" />
                     <path
@@ -61,17 +61,17 @@ const CollectionsSection = ()=>{
                   <span>Collectibles</span>
                 </a>
               </li>
-              <li class="my-1 mr-2.5">
+              <li className="my-1 mr-2.5">
                 <a
                   href="#"
-                  class="group flex h-9 items-center rounded-lg border border-jacarta-100 bg-white px-4 font-display text-sm font-semibold text-jacarta-500 transition-colors hover:border-transparent hover:bg-accent hover:text-white dark:border-jacarta-600 dark:bg-jacarta-900 dark:text-white dark:hover:border-transparent dark:hover:bg-accent dark:hover:text-white"
+                  className="group flex h-9 items-center rounded-lg border border-jacarta-100 bg-white px-4 font-display text-sm font-semibold text-jacarta-500 transition-colors hover:border-transparent hover:bg-accent hover:text-white dark:border-jacarta-600 dark:bg-jacarta-900 dark:text-white dark:hover:border-transparent dark:hover:bg-accent dark:hover:text-white"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     width="24"
                     height="24"
-                    class="mr-1 h-4 w-4 fill-jacarta-700 transition-colors group-hover:fill-white dark:fill-jacarta-100"
+                    className="mr-1 h-4 w-4 fill-jacarta-700 transition-colors group-hover:fill-white dark:fill-jacarta-100"
                   >
                     <path fill="none" d="M0 0h24v24H0z" />
                     <path
@@ -81,17 +81,17 @@ const CollectionsSection = ()=>{
                   <span>Domain</span>
                 </a>
               </li>
-              <li class="my-1 mr-2.5">
+              <li className="my-1 mr-2.5">
                 <a
                   href="#"
-                  class="group flex h-9 items-center rounded-lg border border-jacarta-100 bg-white px-4 font-display text-sm font-semibold text-jacarta-500 transition-colors hover:border-transparent hover:bg-accent hover:text-white dark:border-jacarta-600 dark:bg-jacarta-900 dark:text-white dark:hover:border-transparent dark:hover:bg-accent dark:hover:text-white"
+                  className="group flex h-9 items-center rounded-lg border border-jacarta-100 bg-white px-4 font-display text-sm font-semibold text-jacarta-500 transition-colors hover:border-transparent hover:bg-accent hover:text-white dark:border-jacarta-600 dark:bg-jacarta-900 dark:text-white dark:hover:border-transparent dark:hover:bg-accent dark:hover:text-white"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     width="24"
                     height="24"
-                    class="mr-1 h-4 w-4 fill-jacarta-700 transition-colors group-hover:fill-white dark:fill-jacarta-100"
+                    className="mr-1 h-4 w-4 fill-jacarta-700 transition-colors group-hover:fill-white dark:fill-jacarta-100"
                   >
                     <path fill="none" d="M0 0h24v24H0z" />
                     <path d="M12 13.535V3h8v3h-6v11a4 4 0 1 1-2-3.465z" />
@@ -99,17 +99,17 @@ const CollectionsSection = ()=>{
                   <span>Music</span>
                 </a>
               </li>
-              <li class="my-1 mr-2.5">
+              <li className="my-1 mr-2.5">
                 <a
                   href="#"
-                  class="group flex h-9 items-center rounded-lg border border-jacarta-100 bg-white px-4 font-display text-sm font-semibold text-jacarta-500 transition-colors hover:border-transparent hover:bg-accent hover:text-white dark:border-jacarta-600 dark:bg-jacarta-900 dark:text-white dark:hover:border-transparent dark:hover:bg-accent dark:hover:text-white"
+                  className="group flex h-9 items-center rounded-lg border border-jacarta-100 bg-white px-4 font-display text-sm font-semibold text-jacarta-500 transition-colors hover:border-transparent hover:bg-accent hover:text-white dark:border-jacarta-600 dark:bg-jacarta-900 dark:text-white dark:hover:border-transparent dark:hover:bg-accent dark:hover:text-white"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     width="24"
                     height="24"
-                    class="mr-1 h-4 w-4 fill-jacarta-700 transition-colors group-hover:fill-white dark:fill-jacarta-100"
+                    className="mr-1 h-4 w-4 fill-jacarta-700 transition-colors group-hover:fill-white dark:fill-jacarta-100"
                   >
                     <path fill="none" d="M0 0h24v24H0z" />
                     <path
@@ -119,17 +119,17 @@ const CollectionsSection = ()=>{
                   <span>Photography</span>
                 </a>
               </li>
-              <li class="my-1 mr-2.5">
+              <li className="my-1 mr-2.5">
                 <a
                   href="#"
-                  class="group flex h-9 items-center rounded-lg border border-jacarta-100 bg-white px-4 font-display text-sm font-semibold text-jacarta-500 transition-colors hover:border-transparent hover:bg-accent hover:text-white dark:border-jacarta-600 dark:bg-jacarta-900 dark:text-white dark:hover:border-transparent dark:hover:bg-accent dark:hover:text-white"
+                  className="group flex h-9 items-center rounded-lg border border-jacarta-100 bg-white px-4 font-display text-sm font-semibold text-jacarta-500 transition-colors hover:border-transparent hover:bg-accent hover:text-white dark:border-jacarta-600 dark:bg-jacarta-900 dark:text-white dark:hover:border-transparent dark:hover:bg-accent dark:hover:text-white"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     width="24"
                     height="24"
-                    class="mr-1 h-4 w-4 fill-jacarta-700 transition-colors group-hover:fill-white dark:fill-jacarta-100"
+                    className="mr-1 h-4 w-4 fill-jacarta-700 transition-colors group-hover:fill-white dark:fill-jacarta-100"
                   >
                     <path fill="none" d="M0 0h24v24H0z" />
                     <path
@@ -140,9 +140,9 @@ const CollectionsSection = ()=>{
                 </a>
               </li>
               <li className="my-1 mr-2.5">
-              <div class="my-1 mr-2.5">
+              <div className="my-1 mr-2.5">
                     <button
-                      class="dropdown-toggle group group flex h-9 items-center rounded-lg border border-jacarta-100 bg-white px-4 font-display text-sm font-semibold text-jacarta-700 transition-colors hover:border-transparent hover:bg-accent hover:text-white dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white dark:hover:bg-accent"
+                      className="dropdown-toggle group group flex h-9 items-center rounded-lg border border-jacarta-100 bg-white px-4 font-display text-sm font-semibold text-jacarta-700 transition-colors hover:border-transparent hover:bg-accent hover:text-white dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white dark:hover:bg-accent"
                       id="categoriesFilter"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
@@ -152,7 +152,7 @@ const CollectionsSection = ()=>{
                         viewBox="0 0 24 24"
                         width="24"
                         height="24"
-                        class="mr-1 h-4 w-4 fill-jacarta-700 transition-colors group-hover:fill-white dark:fill-jacarta-100"
+                        className="mr-1 h-4 w-4 fill-jacarta-700 transition-colors group-hover:fill-white dark:fill-jacarta-100"
                       >
                         <path fill="none" d="M0 0h24v24H0z" />
                         <path
@@ -162,22 +162,22 @@ const CollectionsSection = ()=>{
                       <span>Category</span>
                     </button>
                     <div
-                      class="dropdown-menu z-10 hidden min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl dark:bg-jacarta-800"
+                      className="dropdown-menu z-10 hidden min-w-[220px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl dark:bg-jacarta-800"
                       aria-labelledby="categoriesFilter"
                     >
-                      <ul class="flex flex-col flex-wrap">
+                      <ul className="flex flex-col flex-wrap">
                         <li>
                           <a
                             href="#"
-                            class="dropdown-item flex w-full items-center justify-between rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
+                            className="dropdown-item flex w-full items-center justify-between rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
                           >
-                            <span class="text-jacarta-700 dark:text-white">All</span>
+                            <span className="text-jacarta-700 dark:text-white">All</span>
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               viewBox="0 0 24 24"
                               width="24"
                               height="24"
-                              class="mb-[3px] h-4 w-4 fill-accent"
+                              className="mb-[3px] h-4 w-4 fill-accent"
                             >
                               <path fill="none" d="M0 0h24v24H0z"></path>
                               <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
@@ -187,7 +187,7 @@ const CollectionsSection = ()=>{
                         <li>
                           <a
                             href="#"
-                            class="dropdown-item flex w-full items-center rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
+                            className="dropdown-item flex w-full items-center rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
                           >
                             Art
                           </a>
@@ -195,7 +195,7 @@ const CollectionsSection = ()=>{
                         <li>
                           <a
                             href="#"
-                            class="dropdown-item flex w-full items-center rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
+                            className="dropdown-item flex w-full items-center rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
                           >
                             Collectibles
                           </a>
@@ -203,7 +203,7 @@ const CollectionsSection = ()=>{
                         <li>
                           <a
                             href="#"
-                            class="dropdown-item flex w-full items-center rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
+                            className="dropdown-item flex w-full items-center rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
                           >
                             Domain
                           </a>
@@ -211,7 +211,7 @@ const CollectionsSection = ()=>{
                         <li>
                           <a
                             href="#"
-                            class="dropdown-item flex w-full items-center rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
+                            className="dropdown-item flex w-full items-center rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
                           >
                             Music
                           </a>
@@ -219,7 +219,7 @@ const CollectionsSection = ()=>{
                         <li>
                           <a
                             href="#"
-                            class="dropdown-item flex w-full items-center rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
+                            className="dropdown-item flex w-full items-center rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
                           >
                             Photography
                           </a>
@@ -227,7 +227,7 @@ const CollectionsSection = ()=>{
                         <li>
                           <a
                             href="#"
-                            class="dropdown-item flex w-full items-center rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
+                            className="dropdown-item flex w-full items-center rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
                           >
                             Virtual World
                           </a>
@@ -237,21 +237,21 @@ const CollectionsSection = ()=>{
                   </div>
               </li>
             </ul>
-            <div class="dropdown relative my-1 cursor-pointer">
+            <div className="dropdown relative my-1 cursor-pointer">
               <div
-                class="dropdown-toggle inline-flex w-48 items-center justify-between rounded-lg border border-jacarta-100 bg-white py-2 px-3 text-sm dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white"
+                className="dropdown-toggle inline-flex w-48 items-center justify-between rounded-lg border border-jacarta-100 bg-white py-2 px-3 text-sm dark:border-jacarta-600 dark:bg-jacarta-700 dark:text-white"
                 role="button"
                 id="categoriesSort"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <span class="font-display">Trending</span>
+                <span className="font-display">Trending</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   width="24"
                   height="24"
-                  class="h-4 w-4 fill-jacarta-500 dark:fill-white"
+                  className="h-4 w-4 fill-jacarta-500 dark:fill-white"
                 >
                   <path fill="none" d="M0 0h24v24H0z" />
                   <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
@@ -259,11 +259,11 @@ const CollectionsSection = ()=>{
               </div>
 
               <div
-                class="dropdown-menu z-10 hidden w-full whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl dark:bg-jacarta-800"
+                className="dropdown-menu z-10 hidden w-full whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl dark:bg-jacarta-800"
                 aria-labelledby="categoriesSort"
               >
                 <button
-                  class="dropdown-item flex w-full items-center justify-between rounded-xl px-5 py-2 text-left font-display text-sm text-jacarta-700 transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
+                  className="dropdown-item flex w-full items-center justify-between rounded-xl px-5 py-2 text-left font-display text-sm text-jacarta-700 transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
                 >
                   Trending
                   <svg
@@ -271,20 +271,20 @@ const CollectionsSection = ()=>{
                     viewBox="0 0 24 24"
                     width="24"
                     height="24"
-                    class="h-4 w-4 fill-accent"
+                    className="h-4 w-4 fill-accent"
                   >
                     <path fill="none" d="M0 0h24v24H0z" />
                     <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" />
                   </svg>
                 </button>
                 <button
-                  class="dropdown-item flex w-full items-center justify-between rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
+                  className="dropdown-item flex w-full items-center justify-between rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
                 >
                   Top
                 </button>
 
                 <button
-                  class="dropdown-item flex w-full items-center justify-between rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
+                  className="dropdown-item flex w-full items-center justify-between rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
                 >
                   Recent
                 </button>
@@ -293,37 +293,37 @@ const CollectionsSection = ()=>{
           </div>
 
           {/* <!-- Grid --> */}
-          <div class="grid grid-cols-1 gap-[1.875rem] md:grid-cols-3 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-[1.875rem] md:grid-cols-3 lg:grid-cols-4">
             <article>
               <div
-                class="rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
+                className="rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
               >
-                <a href="collection.html" class="flex space-x-[0.625rem]">
-                  <span class="w-[74.5%]">
+                <a href="collection.html" className="flex space-x-[0.625rem]">
+                  <span className="w-[74.5%]">
                     <img
                       src="img/collections/collection_1_1.jpg"
                       alt="item 1"
-                      class="h-full w-full rounded-[0.625rem] object-cover"
+                      className="h-full w-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                   </span>
-                  <span class="flex w-1/3 flex-col space-y-[0.625rem]">
+                  <span className="flex w-1/3 flex-col space-y-[0.625rem]">
                     <img
                       src="img/collections/collection_1_2.jpg"
                       alt="item 1"
-                      class="h-full rounded-[0.625rem] object-cover"
+                      className="h-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                     <img
                       src="img/collections/collection_1_3.jpg"
                       alt="item 1"
-                      class="h-full rounded-[0.625rem] object-cover"
+                      className="h-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                     <img
                       src="img/collections/collection_1_4.jpg"
                       alt="item 1"
-                      class="h-full rounded-[0.625rem] object-cover"
+                      className="h-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                   </span>
@@ -331,55 +331,55 @@ const CollectionsSection = ()=>{
 
                 <a
                   href="collection.html"
-                  class="mt-4 block font-display text-base text-jacarta-700 hover:text-accent dark:text-white dark:hover:text-accent"
+                  className="mt-4 block font-display text-base text-jacarta-700 hover:text-accent dark:text-white dark:hover:text-accent"
                 >
                   Art Me Outside
                 </a>
 
-                <div class="mt-2 flex items-center justify-between text-sm font-medium tracking-tight">
-                  <div class="flex flex-wrap items-center">
-                    <a href="user.html" class="mr-2 shrink-0">
-                      <img src="img/avatars/owner_5.png" alt="owner" class="h-5 w-5 rounded-full" />
+                <div className="mt-2 flex items-center justify-between text-sm font-medium tracking-tight">
+                  <div className="flex flex-wrap items-center">
+                    <a href="user.html" className="mr-2 shrink-0">
+                      <img src="img/avatars/owner_5.png" alt="owner" className="h-5 w-5 rounded-full" />
                     </a>
-                    <span class="mr-1 dark:text-jacarta-400">by</span>
-                    <a href="user.html" class="text-accent">
+                    <span className="mr-1 dark:text-jacarta-400">by</span>
+                    <a href="user.html" className="text-accent">
                       <span>Wow Frens</span>
                     </a>
                   </div>
-                  <span class="text-sm dark:text-jacarta-300">10K Assets</span>
+                  <span className="text-sm dark:text-jacarta-300">10K Assets</span>
                 </div>
               </div>
             </article>
             <article>
               <div
-                class="rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
+                className="rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
               >
-                <a href="collection.html" class="flex space-x-[0.625rem]">
-                  <span class="w-[74.5%]">
+                <a href="collection.html" className="flex space-x-[0.625rem]">
+                  <span className="w-[74.5%]">
                     <img
                       src="img/collections/collection_2_1.jpg"
                       alt="item 1"
-                      class="h-full w-full rounded-[0.625rem] object-cover"
+                      className="h-full w-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                   </span>
-                  <span class="flex w-1/3 flex-col space-y-[0.625rem]">
+                  <span className="flex w-1/3 flex-col space-y-[0.625rem]">
                     <img
                       src="img/collections/collection_2_2.jpg"
                       alt="item 1"
-                      class="h-full rounded-[0.625rem] object-cover"
+                      className="h-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                     <img
                       src="img/collections/collection_2_3.jpg"
                       alt="item 1"
-                      class="h-full rounded-[0.625rem] object-cover"
+                      className="h-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                     <img
                       src="img/collections/collection_2_4.jpg"
                       alt="item 1"
-                      class="h-full rounded-[0.625rem] object-cover"
+                      className="h-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                   </span>
@@ -387,55 +387,55 @@ const CollectionsSection = ()=>{
 
                 <a
                   href="collection.html"
-                  class="mt-4 block font-display text-base text-jacarta-700 hover:text-accent dark:text-white dark:hover:text-accent"
+                  className="mt-4 block font-display text-base text-jacarta-700 hover:text-accent dark:text-white dark:hover:text-accent"
                 >
                   PankySkal
                 </a>
 
-                <div class="mt-2 flex items-center justify-between text-sm font-medium tracking-tight">
-                  <div class="flex flex-wrap items-center">
-                    <a href="user.html" class="mr-2 shrink-0">
-                      <img src="img/avatars/owner_9.png" alt="owner" class="h-5 w-5 rounded-full" />
+                <div className="mt-2 flex items-center justify-between text-sm font-medium tracking-tight">
+                  <div className="flex flex-wrap items-center">
+                    <a href="user.html" className="mr-2 shrink-0">
+                      <img src="img/avatars/owner_9.png" alt="owner" className="h-5 w-5 rounded-full" />
                     </a>
-                    <span class="mr-1 dark:text-jacarta-400">by</span>
-                    <a href="user.html" class="text-accent">
+                    <span className="mr-1 dark:text-jacarta-400">by</span>
+                    <a href="user.html" className="text-accent">
                       <span>NFT stars</span>
                     </a>
                   </div>
-                  <span class="text-sm dark:text-jacarta-300">2.8K Assets</span>
+                  <span className="text-sm dark:text-jacarta-300">2.8K Assets</span>
                 </div>
               </div>
             </article>
             <article>
               <div
-                class="rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
+                className="rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
               >
-                <a href="collection.html" class="flex space-x-[0.625rem]">
-                  <span class="w-[74.5%]">
+                <a href="collection.html" className="flex space-x-[0.625rem]">
+                  <span className="w-[74.5%]">
                     <img
                       src="img/collections/collection_3_1.jpg"
                       alt="item 1"
-                      class="h-full w-full rounded-[0.625rem] object-cover"
+                      className="h-full w-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                   </span>
-                  <span class="flex w-1/3 flex-col space-y-[0.625rem]">
+                  <span className="flex w-1/3 flex-col space-y-[0.625rem]">
                     <img
                       src="img/collections/collection_3_2.jpg"
                       alt="item 1"
-                      class="h-full rounded-[0.625rem] object-cover"
+                      className="h-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                     <img
                       src="img/collections/collection_3_3.jpg"
                       alt="item 1"
-                      class="h-full rounded-[0.625rem] object-cover"
+                      className="h-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                     <img
                       src="img/collections/collection_3_4.jpg"
                       alt="item 1"
-                      class="h-full rounded-[0.625rem] object-cover"
+                      className="h-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                   </span>
@@ -443,55 +443,55 @@ const CollectionsSection = ()=>{
 
                 <a
                   href="collection.html"
-                  class="mt-4 block font-display text-base text-jacarta-700 hover:text-accent dark:text-white dark:hover:text-accent"
+                  className="mt-4 block font-display text-base text-jacarta-700 hover:text-accent dark:text-white dark:hover:text-accent"
                 >
                   VR Space_287
                 </a>
 
-                <div class="mt-2 flex items-center justify-between text-sm font-medium tracking-tight">
-                  <div class="flex flex-wrap items-center">
-                    <a href="user.html" class="mr-2 shrink-0">
-                      <img src="img/avatars/owner_4.png" alt="owner" class="h-5 w-5 rounded-full" />
+                <div className="mt-2 flex items-center justify-between text-sm font-medium tracking-tight">
+                  <div className="flex flex-wrap items-center">
+                    <a href="user.html" className="mr-2 shrink-0">
+                      <img src="img/avatars/owner_4.png" alt="owner" className="h-5 w-5 rounded-full" />
                     </a>
-                    <span class="mr-1 dark:text-jacarta-400">by</span>
-                    <a href="user.html" class="text-accent">
+                    <span className="mr-1 dark:text-jacarta-400">by</span>
+                    <a href="user.html" className="text-accent">
                       <span>Origin Morish</span>
                     </a>
                   </div>
-                  <span class="text-sm dark:text-jacarta-300">8K Assets</span>
+                  <span className="text-sm dark:text-jacarta-300">8K Assets</span>
                 </div>
               </div>
             </article>
             <article>
               <div
-                class="rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
+                className="rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
               >
-                <a href="collection.html" class="flex space-x-[0.625rem]">
-                  <span class="w-[74.5%]">
+                <a href="collection.html" className="flex space-x-[0.625rem]">
+                  <span className="w-[74.5%]">
                     <img
                       src="img/collections/collection_4_1.jpg"
                       alt="item 1"
-                      class="h-full w-full rounded-[0.625rem] object-cover"
+                      className="h-full w-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                   </span>
-                  <span class="flex w-1/3 flex-col space-y-[0.625rem]">
+                  <span className="flex w-1/3 flex-col space-y-[0.625rem]">
                     <img
                       src="img/collections/collection_4_2.jpg"
                       alt="item 1"
-                      class="h-full rounded-[0.625rem] object-cover"
+                      className="h-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                     <img
                       src="img/collections/collection_4_3.jpg"
                       alt="item 1"
-                      class="h-full rounded-[0.625rem] object-cover"
+                      className="h-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                     <img
                       src="img/collections/collection_4_4.jpg"
                       alt="item 1"
-                      class="h-full rounded-[0.625rem] object-cover"
+                      className="h-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                   </span>
@@ -499,55 +499,55 @@ const CollectionsSection = ()=>{
 
                 <a
                   href="collection.html"
-                  class="mt-4 block font-display text-base text-jacarta-700 hover:text-accent dark:text-white dark:hover:text-accent"
+                  className="mt-4 block font-display text-base text-jacarta-700 hover:text-accent dark:text-white dark:hover:text-accent"
                 >
                   Metasmorf
                 </a>
 
-                <div class="mt-2 flex items-center justify-between text-sm font-medium tracking-tight">
-                  <div class="flex flex-wrap items-center">
-                    <a href="user.html" class="mr-2 shrink-0">
-                      <img src="img/avatars/owner_10.png" alt="owner" class="h-5 w-5 rounded-full" />
+                <div className="mt-2 flex items-center justify-between text-sm font-medium tracking-tight">
+                  <div className="flex flex-wrap items-center">
+                    <a href="user.html" className="mr-2 shrink-0">
+                      <img src="img/avatars/owner_10.png" alt="owner" className="h-5 w-5 rounded-full" />
                     </a>
-                    <span class="mr-1 dark:text-jacarta-400">by</span>
-                    <a href="user.html" class="text-accent">
+                    <span className="mr-1 dark:text-jacarta-400">by</span>
+                    <a href="user.html" className="text-accent">
                       <span>Lazy Panda</span>
                     </a>
                   </div>
-                  <span class="text-sm dark:text-jacarta-300">1.5K Assets</span>
+                  <span className="text-sm dark:text-jacarta-300">1.5K Assets</span>
                 </div>
               </div>
             </article>
             <article>
               <div
-                class="rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
+                className="rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
               >
-                <a href="collection.html" class="flex space-x-[0.625rem]">
-                  <span class="w-[74.5%]">
+                <a href="collection.html" className="flex space-x-[0.625rem]">
+                  <span className="w-[74.5%]">
                     <img
                       src="img/collections/collection_5_1.jpg"
                       alt="item 1"
-                      class="h-full w-full rounded-[0.625rem] object-cover"
+                      className="h-full w-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                   </span>
-                  <span class="flex w-1/3 flex-col space-y-[0.625rem]">
+                  <span className="flex w-1/3 flex-col space-y-[0.625rem]">
                     <img
                       src="img/collections/collection_5_2.jpg"
                       alt="item 1"
-                      class="h-full rounded-[0.625rem] object-cover"
+                      className="h-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                     <img
                       src="img/collections/collection_5_3.jpg"
                       alt="item 1"
-                      class="h-full rounded-[0.625rem] object-cover"
+                      className="h-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                     <img
                       src="img/collections/collection_5_4.jpg"
                       alt="item 1"
-                      class="h-full rounded-[0.625rem] object-cover"
+                      className="h-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                   </span>
@@ -555,58 +555,58 @@ const CollectionsSection = ()=>{
 
                 <a
                   href="collection.html"
-                  class="mt-4 block font-display text-base text-jacarta-700 hover:text-accent dark:text-white dark:hover:text-accent"
+                  className="mt-4 block font-display text-base text-jacarta-700 hover:text-accent dark:text-white dark:hover:text-accent"
                 >
                   3Landers
                 </a>
 
-                <div class="mt-2 flex items-center justify-between text-sm font-medium tracking-tight">
-                  <div class="flex flex-wrap items-center">
-                    <a href="user.html" class="mr-2 shrink-0">
-                      <img src="img/avatars/owner_11.png" alt="owner" class="h-5 w-5 rounded-full" />
+                <div className="mt-2 flex items-center justify-between text-sm font-medium tracking-tight">
+                  <div className="flex flex-wrap items-center">
+                    <a href="user.html" className="mr-2 shrink-0">
+                      <img src="img/avatars/owner_11.png" alt="owner" className="h-5 w-5 rounded-full" />
                     </a>
-                    <span class="mr-1 dark:text-jacarta-400">by</span>
-                    <a href="user.html" class="text-accent">
+                    <span className="mr-1 dark:text-jacarta-400">by</span>
+                    <a href="user.html" className="text-accent">
                       <span>051_Hart</span>
                     </a>
                   </div>
                   <div className="">
-                  <span class="text-sm dark:text-jacarta-300"><span className="text-jacarta-500 text-xs">15K</span> Assets</span><br/>
-                  <span class="text-sm dark:text-jacarta-300"><span className="text-jacarta-500 text-xs">Floor Price</span> 1000 $</span>
+                  <span className="text-sm dark:text-jacarta-300"><span className="text-jacarta-500 text-xs">15K</span> Assets</span><br/>
+                  <span className="text-sm dark:text-jacarta-300"><span className="text-jacarta-500 text-xs">Floor Price</span> 1000 $</span>
                   </div>
                 </div>
               </div>
             </article>
             <article>
               <div
-                class="rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
+                className="rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
               >
-                <a href="collection.html" class="flex space-x-[0.625rem]">
-                  <span class="w-[74.5%]">
+                <a href="collection.html" className="flex space-x-[0.625rem]">
+                  <span className="w-[74.5%]">
                     <img
                       src="img/collections/collection_6_1.jpg"
                       alt="item 1"
-                      class="h-full w-full rounded-[0.625rem] object-cover"
+                      className="h-full w-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                   </span>
-                  <span class="flex w-1/3 flex-col space-y-[0.625rem]">
+                  <span className="flex w-1/3 flex-col space-y-[0.625rem]">
                     <img
                       src="img/collections/collection_6_2.jpg"
                       alt="item 1"
-                      class="h-full rounded-[0.625rem] object-cover"
+                      className="h-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                     <img
                       src="img/collections/collection_6_3.jpg"
                       alt="item 1"
-                      class="h-full rounded-[0.625rem] object-cover"
+                      className="h-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                     <img
                       src="img/collections/collection_6_4.jpg"
                       alt="item 1"
-                      class="h-full rounded-[0.625rem] object-cover"
+                      className="h-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                   </span>
@@ -614,55 +614,55 @@ const CollectionsSection = ()=>{
 
                 <a
                   href="collection.html"
-                  class="mt-4 block font-display text-base text-jacarta-700 hover:text-accent dark:text-white dark:hover:text-accent"
+                  className="mt-4 block font-display text-base text-jacarta-700 hover:text-accent dark:text-white dark:hover:text-accent"
                 >
                   SlimHoods
                 </a>
 
-                <div class="mt-2 flex items-center justify-between text-sm font-medium tracking-tight">
-                  <div class="flex flex-wrap items-center">
-                    <a href="user.html" class="mr-2 shrink-0">
-                      <img src="img/avatars/owner_3.png" alt="owner" class="h-5 w-5 rounded-full" />
+                <div className="mt-2 flex items-center justify-between text-sm font-medium tracking-tight">
+                  <div className="flex flex-wrap items-center">
+                    <a href="user.html" className="mr-2 shrink-0">
+                      <img src="img/avatars/owner_3.png" alt="owner" className="h-5 w-5 rounded-full" />
                     </a>
-                    <span class="mr-1 dark:text-jacarta-400">by</span>
-                    <a href="user.html" class="text-accent">
+                    <span className="mr-1 dark:text-jacarta-400">by</span>
+                    <a href="user.html" className="text-accent">
                       <span>Crytopank</span>
                     </a>
                   </div>
-                  <span class="text-sm dark:text-jacarta-300">8.8K Assets</span>
+                  <span className="text-sm dark:text-jacarta-300">8.8K Assets</span>
                 </div>
               </div>
             </article>
             <article>
               <div
-                class="rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
+                className="rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
               >
-                <a href="collection.html" class="flex space-x-[0.625rem]">
-                  <span class="w-[74.5%]">
+                <a href="collection.html" className="flex space-x-[0.625rem]">
+                  <span className="w-[74.5%]">
                     <img
                       src="img/collections/collection_7_1.jpg"
                       alt="item 1"
-                      class="h-full w-full rounded-[0.625rem] object-cover"
+                      className="h-full w-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                   </span>
-                  <span class="flex w-1/3 flex-col space-y-[0.625rem]">
+                  <span className="flex w-1/3 flex-col space-y-[0.625rem]">
                     <img
                       src="img/collections/collection_7_2.jpg"
                       alt="item 1"
-                      class="h-full rounded-[0.625rem] object-cover"
+                      className="h-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                     <img
                       src="img/collections/collection_7_3.jpg"
                       alt="item 1"
-                      class="h-full rounded-[0.625rem] object-cover"
+                      className="h-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                     <img
                       src="img/collections/collection_7_4.jpg"
                       alt="item 1"
-                      class="h-full rounded-[0.625rem] object-cover"
+                      className="h-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                   </span>
@@ -670,55 +670,55 @@ const CollectionsSection = ()=>{
 
                 <a
                   href="collection.html"
-                  class="mt-4 block font-display text-base text-jacarta-700 hover:text-accent dark:text-white dark:hover:text-accent"
+                  className="mt-4 block font-display text-base text-jacarta-700 hover:text-accent dark:text-white dark:hover:text-accent"
                 >
                   The Overseers
                 </a>
 
-                <div class="mt-2 flex items-center justify-between text-sm font-medium tracking-tight">
-                  <div class="flex flex-wrap items-center">
-                    <a href="user.html" class="mr-2 shrink-0">
-                      <img src="img/avatars/creator_2.png" alt="owner" class="h-5 w-5 rounded-full" />
+                <div className="mt-2 flex items-center justify-between text-sm font-medium tracking-tight">
+                  <div className="flex flex-wrap items-center">
+                    <a href="user.html" className="mr-2 shrink-0">
+                      <img src="img/avatars/creator_2.png" alt="owner" className="h-5 w-5 rounded-full" />
                     </a>
-                    <span class="mr-1 dark:text-jacarta-400">by</span>
-                    <a href="user.html" class="text-accent">
+                    <span className="mr-1 dark:text-jacarta-400">by</span>
+                    <a href="user.html" className="text-accent">
                       <span>Hey Mrsmeseks</span>
                     </a>
                   </div>
-                  <span class="text-sm dark:text-jacarta-300">13K Assets</span>
+                  <span className="text-sm dark:text-jacarta-300">13K Assets</span>
                 </div>
               </div>
             </article>
             <article>
               <div
-                class="rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
+                className="rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
               >
-                <a href="collection.html" class="flex space-x-[0.625rem]">
-                  <span class="w-[74.5%]">
+                <a href="collection.html" className="flex space-x-[0.625rem]">
+                  <span className="w-[74.5%]">
                     <img
                       src="img/collections/collection_8_1.jpg"
                       alt="item 1"
-                      class="h-full w-full rounded-[0.625rem] object-cover"
+                      className="h-full w-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                   </span>
-                  <span class="flex w-1/3 flex-col space-y-[0.625rem]">
+                  <span className="flex w-1/3 flex-col space-y-[0.625rem]">
                     <img
                       src="img/collections/collection_8_2.jpg"
                       alt="item 1"
-                      class="h-full rounded-[0.625rem] object-cover"
+                      className="h-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                     <img
                       src="img/collections/collection_8_3.jpg"
                       alt="item 1"
-                      class="h-full rounded-[0.625rem] object-cover"
+                      className="h-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                     <img
                       src="img/collections/collection_8_4.jpg"
                       alt="item 1"
-                      class="h-full rounded-[0.625rem] object-cover"
+                      className="h-full rounded-[0.625rem] object-cover"
                       loading="lazy"
                     />
                   </span>
@@ -726,22 +726,22 @@ const CollectionsSection = ()=>{
 
                 <a
                   href="collection.html"
-                  class="mt-4 block font-display text-base text-jacarta-700 hover:text-accent dark:text-white dark:hover:text-accent"
+                  className="mt-4 block font-display text-base text-jacarta-700 hover:text-accent dark:text-white dark:hover:text-accent"
                 >
                   Dope Shibas
                 </a>
 
-                <div class="mt-2 flex items-center justify-between text-sm font-medium tracking-tight">
-                  <div class="flex flex-wrap items-center">
-                    <a href="user.html" class="mr-2 shrink-0">
-                      <img src="img/avatars/owner_12.png" alt="owner" class="h-5 w-5 rounded-full" />
+                <div className="mt-2 flex items-center justify-between text-sm font-medium tracking-tight">
+                  <div className="flex flex-wrap items-center">
+                    <a href="user.html" className="mr-2 shrink-0">
+                      <img src="img/avatars/owner_12.png" alt="owner" className="h-5 w-5 rounded-full" />
                     </a>
-                    <span class="mr-1 dark:text-jacarta-400">by</span>
-                    <a href="user.html" class="text-accent">
+                    <span className="mr-1 dark:text-jacarta-400">by</span>
+                    <a href="user.html" className="text-accent">
                       <span>alyxbow</span>
                     </a>
                   </div>
-                  <span class="text-sm dark:text-jacarta-300">3K Assets</span>
+                  <span className="text-sm dark:text-jacarta-300">3K Assets</span>
                 </div>
               </div>
             </article>

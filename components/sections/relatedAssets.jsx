@@ -1,19 +1,19 @@
 const RelatedAssets = ()=>{
 
     return(
-        <section class="bg-light-base py-24 dark:bg-jacarta-800">
-        <div class="container">
-          <h2 class="mb-8 text-center font-display text-3xl text-jacarta-700 dark:text-white">
+        <section className="bg-light-base py-24 dark:bg-jacarta-800">
+        <div className="container">
+          <h2 className="mb-8 text-center font-display text-3xl text-jacarta-700 dark:text-white">
             Related Assets
           </h2>
 
-          <div class="relative">
-            <div class="swiper card-slider-4-columns !py-5">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
+          <div className="relative">
+            <div className="swiper card-slider-4-columns !py-5">
+              <div className="swiper-wrapper">
+                <div className="swiper-slide">
                   <article>
                     <div
-                      class="block rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
+                      className="block rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
                     >
                       <figure>
                         <a href="item.html">
@@ -22,19 +22,19 @@ const RelatedAssets = ()=>{
                             alt="item 1"
                             width="230"
                             height="230"
-                            class="w-full rounded-[0.625rem]"
+                            className="w-full rounded-[0.625rem]"
                             loading="lazy"
                           />
                         </a>
                       </figure>
-                      <div class="mt-4 flex items-center justify-between">
+                      <div className="mt-4 flex items-center justify-between">
                         <a href="item.html">
-                          <span class="font-display text-base text-jacarta-700 hover:text-accent dark:text-white"
+                          <span className="font-display text-base text-jacarta-700 hover:text-accent dark:text-white"
                             >ETH Me Outside</span
                           >
                         </a>
                         <span
-                          class="flex items-center whitespace-nowrap rounded-md border border-jacarta-100 py-1 px-2 dark:border-jacarta-600"
+                          className="flex items-center whitespace-nowrap rounded-md border border-jacarta-100 py-1 px-2 dark:border-jacarta-600"
                         >
                           <span data-tippy-content="ETH">
                             <svg
@@ -44,7 +44,7 @@ const RelatedAssets = ()=>{
                               y="0"
                               viewBox="0 0 1920 1920"
                               xmlSpace="preserve"
-                              class="h-4 w-4"
+                              className="h-4 w-4"
                             >
                               <path fill="#8A92B2" d="M959.8 80.7L420.1 976.3 959.8 731z" />
                               <path
@@ -56,27 +56,27 @@ const RelatedAssets = ()=>{
                               <path fill="#62688F" d="M959.8 1397.6v441.7l540.1-760.6z" />
                             </svg>
                           </span>
-                          <span class="text-sm font-medium tracking-tight text-green">1.55 ETH</span>
+                          <span className="text-sm font-medium tracking-tight text-green">1.55 ETH</span>
                         </span>
                       </div>
-                      <div class="mt-2 text-sm">
-                        <span class="dark:text-jacarta-300">Current Bid</span>
-                        <span class="text-jacarta-700 dark:text-jacarta-100">1.3 ETH</span>
+                      <div className="mt-2 text-sm">
+                        <span className="dark:text-jacarta-300">Current Bid</span>
+                        <span className="text-jacarta-700 dark:text-jacarta-100">1.3 ETH</span>
                       </div>
 
-                      <div class="mt-8 flex items-center justify-between">
+                      <div className="mt-8 flex items-center justify-between">
                         <button
                           type="button"
-                          class="font-display text-sm font-semibold text-accent"
+                          className="font-display text-sm font-semibold text-accent"
                           data-bs-toggle="modal"
                           data-bs-target="#placeBidModal"
                         >
                           Place bid
                         </button>
 
-                        <div class="flex items-center space-x-1">
+                        <div className="flex items-center space-x-1">
                           <span
-                            class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
+                            className="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../public/img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
                             data-tippy-content="Favorite"
                           >
                             <svg
@@ -84,7 +84,7 @@ const RelatedAssets = ()=>{
                               viewBox="0 0 24 24"
                               width="24"
                               height="24"
-                              class="h-4 w-4 fill-jacarta-500 hover:fill-red dark:fill-jacarta-200 dark:hover:fill-red"
+                              className="h-4 w-4 fill-jacarta-500 hover:fill-red dark:fill-jacarta-200 dark:hover:fill-red"
                             >
                               <path fill="none" d="M0 0H24V24H0z" />
                               <path
@@ -92,16 +92,16 @@ const RelatedAssets = ()=>{
                               />
                             </svg>
                           </span>
-                          <span class="text-sm dark:text-jacarta-200">159</span>
+                          <span className="text-sm dark:text-jacarta-200">159</span>
                         </div>
                       </div>
                     </div>
                   </article>
                 </div>
-                <div class="swiper-slide">
+                <div className="swiper-slide">
                   <article>
                     <div
-                      class="block rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
+                      className="block rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
                     >
                       <figure>
                         <a href="item.html">
@@ -110,19 +110,19 @@ const RelatedAssets = ()=>{
                             alt="item 2"
                             width="230"
                             height="230"
-                            class="w-full rounded-[0.625rem]"
+                            className="w-full rounded-[0.625rem]"
                             loading="lazy"
                           />
                         </a>
                       </figure>
-                      <div class="mt-4 flex items-center justify-between">
+                      <div className="mt-4 flex items-center justify-between">
                         <a href="item.html">
-                          <span class="font-display text-base text-jacarta-700 hover:text-accent dark:text-white"
+                          <span className="font-display text-base text-jacarta-700 hover:text-accent dark:text-white"
                             >Lazyone Panda</span
                           >
                         </a>
                         <span
-                          class="flex items-center whitespace-nowrap rounded-md border border-jacarta-100 py-1 px-2 dark:border-jacarta-600"
+                          className="flex items-center whitespace-nowrap rounded-md border border-jacarta-100 py-1 px-2 dark:border-jacarta-600"
                         >
                           <span data-tippy-content="ETH">
                             <svg
@@ -132,7 +132,7 @@ const RelatedAssets = ()=>{
                               y="0"
                               viewBox="0 0 1920 1920"
                               xmlSpace="preserve"
-                              class="h-4 w-4"
+                              className="h-4 w-4"
                             >
                               <path fill="#8A92B2" d="M959.8 80.7L420.1 976.3 959.8 731z" />
                               <path
@@ -144,26 +144,26 @@ const RelatedAssets = ()=>{
                               <path fill="#62688F" d="M959.8 1397.6v441.7l540.1-760.6z" />
                             </svg>
                           </span>
-                          <span class="text-sm font-medium tracking-tight text-green">2 ETH</span>
+                          <span className="text-sm font-medium tracking-tight text-green">2 ETH</span>
                         </span>
                       </div>
-                      <div class="mt-2 text-sm">
-                        <span class="dark:text-jacarta-300">Current Bid</span>
-                        <span class="text-jacarta-700 dark:text-jacarta-100">0.001 ETH</span>
+                      <div className="mt-2 text-sm">
+                        <span className="dark:text-jacarta-300">Current Bid</span>
+                        <span className="text-jacarta-700 dark:text-jacarta-100">0.001 ETH</span>
                       </div>
 
-                      <div class="mt-8 flex items-center justify-between">
+                      <div className="mt-8 flex items-center justify-between">
                         <button
                           type="button"
-                          class="font-display text-sm font-semibold text-accent"
+                          className="font-display text-sm font-semibold text-accent"
                           data-bs-toggle="modal"
                           data-bs-target="#placeBidModal"
                         >
                           Place bid
                         </button>
-                        <div class="flex items-center space-x-1">
+                        <div className="flex items-center space-x-1">
                           <span
-                            class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
+                            className="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../public/img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
                             data-tippy-content="Favorite"
                           >
                             <svg
@@ -171,7 +171,7 @@ const RelatedAssets = ()=>{
                               viewBox="0 0 24 24"
                               width="24"
                               height="24"
-                              class="h-4 w-4 fill-jacarta-500 hover:fill-red dark:fill-jacarta-200 dark:hover:fill-red"
+                              className="h-4 w-4 fill-jacarta-500 hover:fill-red dark:fill-jacarta-200 dark:hover:fill-red"
                             >
                               <path fill="none" d="M0 0H24V24H0z" />
                               <path
@@ -179,16 +179,16 @@ const RelatedAssets = ()=>{
                               />
                             </svg>
                           </span>
-                          <span class="text-sm dark:text-jacarta-200">75</span>
+                          <span className="text-sm dark:text-jacarta-200">75</span>
                         </div>
                       </div>
                     </div>
                   </article>
                 </div>
-                <div class="swiper-slide">
+                <div className="swiper-slide">
                   <article>
                     <div
-                      class="block rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
+                      className="block rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
                     >
                       <figure>
                         <a href="item.html">
@@ -197,19 +197,19 @@ const RelatedAssets = ()=>{
                             alt="item 6"
                             width="230"
                             height="230"
-                            class="w-full rounded-[0.625rem]"
+                            className="w-full rounded-[0.625rem]"
                             loading="lazy"
                           />
                         </a>
                       </figure>
-                      <div class="mt-4 flex items-center justify-between">
+                      <div className="mt-4 flex items-center justify-between">
                         <a href="item.html">
-                          <span class="font-display text-base text-jacarta-700 hover:text-accent dark:text-white"
+                          <span className="font-display text-base text-jacarta-700 hover:text-accent dark:text-white"
                             >Splendid Girl</span
                           >
                         </a>
                         <span
-                          class="flex items-center whitespace-nowrap rounded-md border border-jacarta-100 py-1 px-2 dark:border-jacarta-600"
+                          className="flex items-center whitespace-nowrap rounded-md border border-jacarta-100 py-1 px-2 dark:border-jacarta-600"
                         >
                           <span data-tippy-content="ETH">
                             <svg
@@ -219,7 +219,7 @@ const RelatedAssets = ()=>{
                               y="0"
                               viewBox="0 0 1920 1920"
                               xmlSpace="preserve"
-                              class="h-4 w-4"
+                              className="h-4 w-4"
                             >
                               <path fill="#8A92B2" d="M959.8 80.7L420.1 976.3 959.8 731z" />
                               <path
@@ -231,26 +231,26 @@ const RelatedAssets = ()=>{
                               <path fill="#62688F" d="M959.8 1397.6v441.7l540.1-760.6z" />
                             </svg>
                           </span>
-                          <span class="text-sm font-medium tracking-tight text-green">5.1 ETH</span>
+                          <span className="text-sm font-medium tracking-tight text-green">5.1 ETH</span>
                         </span>
                       </div>
-                      <div class="mt-2 text-sm">
-                        <span class="dark:text-jacarta-300">Current Bid</span>
-                        <span class="text-jacarta-700 dark:text-jacarta-100">4.7 ETH</span>
+                      <div className="mt-2 text-sm">
+                        <span className="dark:text-jacarta-300">Current Bid</span>
+                        <span className="text-jacarta-700 dark:text-jacarta-100">4.7 ETH</span>
                       </div>
 
-                      <div class="mt-8 flex items-center justify-between">
+                      <div className="mt-8 flex items-center justify-between">
                         <button
                           type="button"
-                          class="font-display text-sm font-semibold text-accent"
+                          className="font-display text-sm font-semibold text-accent"
                           data-bs-toggle="modal"
                           data-bs-target="#placeBidModal"
                         >
                           Place bid
                         </button>
-                        <div class="flex items-center space-x-1">
+                        <div className="flex items-center space-x-1">
                           <span
-                            class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
+                            className="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../public/img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
                             data-tippy-content="Favorite"
                           >
                             <svg
@@ -258,7 +258,7 @@ const RelatedAssets = ()=>{
                               viewBox="0 0 24 24"
                               width="24"
                               height="24"
-                              class="h-4 w-4 fill-jacarta-500 hover:fill-red dark:fill-jacarta-200 dark:hover:fill-red"
+                              className="h-4 w-4 fill-jacarta-500 hover:fill-red dark:fill-jacarta-200 dark:hover:fill-red"
                             >
                               <path fill="none" d="M0 0H24V24H0z" />
                               <path
@@ -266,16 +266,16 @@ const RelatedAssets = ()=>{
                               />
                             </svg>
                           </span>
-                          <span class="text-sm dark:text-jacarta-200">253</span>
+                          <span className="text-sm dark:text-jacarta-200">253</span>
                         </div>
                       </div>
                     </div>
                   </article>
                 </div>
-                <div class="swiper-slide">
+                <div className="swiper-slide">
                   <article>
                     <div
-                      class="block rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
+                      className="block rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
                     >
                       <figure>
                         <a href="item.html">
@@ -284,19 +284,19 @@ const RelatedAssets = ()=>{
                             alt="item 4"
                             width="230"
                             height="230"
-                            class="w-full rounded-[0.625rem]"
+                            className="w-full rounded-[0.625rem]"
                             loading="lazy"
                           />
                         </a>
                       </figure>
-                      <div class="mt-4 flex items-center justify-between">
+                      <div className="mt-4 flex items-center justify-between">
                         <a href="item.html">
-                          <span class="font-display text-base text-jacarta-700 hover:text-accent dark:text-white"
+                          <span className="font-display text-base text-jacarta-700 hover:text-accent dark:text-white"
                             >Amazing NFT art</span
                           >
                         </a>
                         <span
-                          class="flex items-center whitespace-nowrap rounded-md border border-jacarta-100 py-1 px-2 dark:border-jacarta-600"
+                          className="flex items-center whitespace-nowrap rounded-md border border-jacarta-100 py-1 px-2 dark:border-jacarta-600"
                         >
                           <span data-tippy-content="ETH">
                             <svg
@@ -306,7 +306,7 @@ const RelatedAssets = ()=>{
                               y="0"
                               viewBox="0 0 1920 1920"
                               xmlSpace="preserve"
-                              class="h-4 w-4"
+                              className="h-4 w-4"
                             >
                               <path fill="#8A92B2" d="M959.8 80.7L420.1 976.3 959.8 731z" />
                               <path
@@ -318,26 +318,26 @@ const RelatedAssets = ()=>{
                               <path fill="#62688F" d="M959.8 1397.6v441.7l540.1-760.6z" />
                             </svg>
                           </span>
-                          <span class="text-sm font-medium tracking-tight text-green">7 ETH</span>
+                          <span className="text-sm font-medium tracking-tight text-green">7 ETH</span>
                         </span>
                       </div>
-                      <div class="mt-2 text-sm">
-                        <span class="dark:text-jacarta-300">Current Bid</span>
-                        <span class="text-jacarta-700 dark:text-jacarta-100">1.2 ETH</span>
+                      <div className="mt-2 text-sm">
+                        <span className="dark:text-jacarta-300">Current Bid</span>
+                        <span className="text-jacarta-700 dark:text-jacarta-100">1.2 ETH</span>
                       </div>
 
-                      <div class="mt-8 flex items-center justify-between">
+                      <div className="mt-8 flex items-center justify-between">
                         <button
                           type="button"
-                          class="font-display text-sm font-semibold text-accent"
+                          className="font-display text-sm font-semibold text-accent"
                           data-bs-toggle="modal"
                           data-bs-target="#placeBidModal"
                         >
                           Place bid
                         </button>
-                        <div class="flex items-center space-x-1">
+                        <div className="flex items-center space-x-1">
                           <span
-                            class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
+                            className="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../public/img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
                             data-tippy-content="Favorite"
                           >
                             <svg
@@ -345,7 +345,7 @@ const RelatedAssets = ()=>{
                               viewBox="0 0 24 24"
                               width="24"
                               height="24"
-                              class="h-4 w-4 fill-jacarta-500 hover:fill-red dark:fill-jacarta-200 dark:hover:fill-red"
+                              className="h-4 w-4 fill-jacarta-500 hover:fill-red dark:fill-jacarta-200 dark:hover:fill-red"
                             >
                               <path fill="none" d="M0 0H24V24H0z" />
                               <path
@@ -353,18 +353,18 @@ const RelatedAssets = ()=>{
                               />
                             </svg>
                           </span>
-                          <span class="text-sm dark:text-jacarta-200">324</span>
+                          <span className="text-sm dark:text-jacarta-200">324</span>
                         </div>
                       </div>
                     </div>
                   </article>
                 </div>
-                <div class="swiper-slide">
+                <div className="swiper-slide">
                   <article>
                     <div
-                      class="block rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
+                      className="block rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
                     >
-                      <figure class="relative">
+                      <figure className="relative">
                         <a href="item.html">
                           <img
                             src="/img/pixel.jpg"
@@ -372,19 +372,19 @@ const RelatedAssets = ()=>{
                             alt="item 3"
                             width="230"
                             height="230"
-                            class="swiper-lazy w-full rounded-[0.625rem]"
+                            className="swiper-lazy w-full rounded-[0.625rem]"
                           />
-                          <div class="swiper-lazy-preloader"></div>
+                          <div className="swiper-lazy-preloader"></div>
                         </a>
                       </figure>
-                      <div class="mt-4 flex items-center justify-between">
+                      <div className="mt-4 flex items-center justify-between">
                         <a href="item.html">
-                          <span class="font-display text-base text-jacarta-700 hover:text-accent dark:text-white"
+                          <span className="font-display text-base text-jacarta-700 hover:text-accent dark:text-white"
                             >Portrait Gallery</span
                           >
                         </a>
                         <span
-                          class="flex items-center whitespace-nowrap rounded-md border border-jacarta-100 py-1 px-2 dark:border-jacarta-600"
+                          className="flex items-center whitespace-nowrap rounded-md border border-jacarta-100 py-1 px-2 dark:border-jacarta-600"
                         >
                           <span data-tippy-content="ETH">
                             <svg
@@ -394,7 +394,7 @@ const RelatedAssets = ()=>{
                               y="0"
                               viewBox="0 0 1920 1920"
                               xmlSpace="preserve"
-                              class="h-4 w-4"
+                              className="h-4 w-4"
                             >
                               <path fill="#8A92B2" d="M959.8 80.7L420.1 976.3 959.8 731z" />
                               <path
@@ -406,26 +406,26 @@ const RelatedAssets = ()=>{
                               <path fill="#62688F" d="M959.8 1397.6v441.7l540.1-760.6z" />
                             </svg>
                           </span>
-                          <span class="text-sm font-medium tracking-tight text-green">0.7 ETH</span>
+                          <span className="text-sm font-medium tracking-tight text-green">0.7 ETH</span>
                         </span>
                       </div>
-                      <div class="mt-2 text-sm">
-                        <span class="dark:text-jacarta-300">Current Bid</span>
-                        <span class="text-jacarta-700 dark:text-jacarta-100">0.05 ETH</span>
+                      <div className="mt-2 text-sm">
+                        <span className="dark:text-jacarta-300">Current Bid</span>
+                        <span className="text-jacarta-700 dark:text-jacarta-100">0.05 ETH</span>
                       </div>
 
-                      <div class="mt-8 flex items-center justify-between">
+                      <div className="mt-8 flex items-center justify-between">
                         <button
                           type="button"
-                          class="font-display text-sm font-semibold text-accent"
+                          className="font-display text-sm font-semibold text-accent"
                           data-bs-toggle="modal"
                           data-bs-target="#placeBidModal"
                         >
                           Place bid
                         </button>
-                        <div class="flex items-center space-x-1">
+                        <div className="flex items-center space-x-1">
                           <span
-                            class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
+                            className="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../public/img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
                             data-tippy-content="Favorite"
                           >
                             <svg
@@ -433,7 +433,7 @@ const RelatedAssets = ()=>{
                               viewBox="0 0 24 24"
                               width="24"
                               height="24"
-                              class="h-4 w-4 fill-jacarta-500 hover:fill-red dark:fill-jacarta-200 dark:hover:fill-red"
+                              className="h-4 w-4 fill-jacarta-500 hover:fill-red dark:fill-jacarta-200 dark:hover:fill-red"
                             >
                               <path fill="none" d="M0 0H24V24H0z" />
                               <path
@@ -441,18 +441,18 @@ const RelatedAssets = ()=>{
                               />
                             </svg>
                           </span>
-                          <span class="text-sm dark:text-jacarta-200">54</span>
+                          <span className="text-sm dark:text-jacarta-200">54</span>
                         </div>
                       </div>
                     </div>
                   </article>
                 </div>
-                <div class="swiper-slide">
+                <div className="swiper-slide">
                   <article>
                     <div
-                      class="block rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
+                      className="block rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
                     >
-                      <figure class="relative">
+                      <figure className="relative">
                         <a href="item.html">
                           <img
                             src="/img/pixel.jpg"
@@ -460,19 +460,19 @@ const RelatedAssets = ()=>{
                             alt="item 5"
                             width="230"
                             height="230"
-                            class="swiper-lazy w-full rounded-[0.625rem]"
+                            className="swiper-lazy w-full rounded-[0.625rem]"
                           />
-                          <div class="swiper-lazy-preloader"></div>
+                          <div className="swiper-lazy-preloader"></div>
                         </a>
                       </figure>
-                      <div class="mt-4 flex items-center justify-between">
+                      <div className="mt-4 flex items-center justify-between">
                         <a href="item.html">
-                          <span class="font-display text-base text-jacarta-700 hover:text-accent dark:text-white"
+                          <span className="font-display text-base text-jacarta-700 hover:text-accent dark:text-white"
                             >Flourishing Cat #180</span
                           >
                         </a>
                         <span
-                          class="flex items-center whitespace-nowrap rounded-md border border-jacarta-100 py-1 px-2 dark:border-jacarta-600"
+                          className="flex items-center whitespace-nowrap rounded-md border border-jacarta-100 py-1 px-2 dark:border-jacarta-600"
                         >
                           <span data-tippy-content="ETH">
                             <svg
@@ -482,7 +482,7 @@ const RelatedAssets = ()=>{
                               y="0"
                               viewBox="0 0 1920 1920"
                               xmlSpace="preserve"
-                              class="h-4 w-4"
+                              className="h-4 w-4"
                             >
                               <path fill="#8A92B2" d="M959.8 80.7L420.1 976.3 959.8 731z" />
                               <path
@@ -494,26 +494,26 @@ const RelatedAssets = ()=>{
                               <path fill="#62688F" d="M959.8 1397.6v441.7l540.1-760.6z" />
                             </svg>
                           </span>
-                          <span class="text-sm font-medium tracking-tight text-green">3 ETH</span>
+                          <span className="text-sm font-medium tracking-tight text-green">3 ETH</span>
                         </span>
                       </div>
-                      <div class="mt-2 text-sm">
-                        <span class="dark:text-jacarta-300">Current Bid</span>
-                        <span class="text-jacarta-700 dark:text-jacarta-100">0.25 ETH</span>
+                      <div className="mt-2 text-sm">
+                        <span className="dark:text-jacarta-300">Current Bid</span>
+                        <span className="text-jacarta-700 dark:text-jacarta-100">0.25 ETH</span>
                       </div>
 
-                      <div class="mt-8 flex items-center justify-between">
+                      <div className="mt-8 flex items-center justify-between">
                         <button
                           type="button"
-                          class="font-display text-sm font-semibold text-accent"
+                          className="font-display text-sm font-semibold text-accent"
                           data-bs-toggle="modal"
                           data-bs-target="#placeBidModal"
                         >
                           Place bid
                         </button>
-                        <div class="flex items-center space-x-1">
+                        <div className="flex items-center space-x-1">
                           <span
-                            class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
+                            className="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../public/img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
                             data-tippy-content="Favorite"
                           >
                             <svg
@@ -521,7 +521,7 @@ const RelatedAssets = ()=>{
                               viewBox="0 0 24 24"
                               width="24"
                               height="24"
-                              class="h-4 w-4 fill-jacarta-500 hover:fill-red dark:fill-jacarta-200 dark:hover:fill-red"
+                              className="h-4 w-4 fill-jacarta-500 hover:fill-red dark:fill-jacarta-200 dark:hover:fill-red"
                             >
                               <path fill="none" d="M0 0H24V24H0z" />
                               <path
@@ -529,7 +529,7 @@ const RelatedAssets = ()=>{
                               />
                             </svg>
                           </span>
-                          <span class="text-sm dark:text-jacarta-200">125</span>
+                          <span className="text-sm dark:text-jacarta-200">125</span>
                         </div>
                       </div>
                     </div>
@@ -539,28 +539,28 @@ const RelatedAssets = ()=>{
             </div>
 
             <div
-              class="swiper-button-prev group absolute top-1/2 -left-4 z-10 -mt-6 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-white p-3 text-base shadow-white-volume sm:-left-6"
+              className="swiper-button-prev group absolute top-1/2 -left-4 z-10 -mt-6 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-white p-3 text-base shadow-white-volume sm:-left-6"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 width="24"
                 height="24"
-                class="fill-jacarta-700 group-hover:fill-accent"
+                className="fill-jacarta-700 group-hover:fill-accent"
               >
                 <path fill="none" d="M0 0h24v24H0z" />
                 <path d="M10.828 12l4.95 4.95-1.414 1.414L8 12l6.364-6.364 1.414 1.414z" />
               </svg>
             </div>
             <div
-              class="swiper-button-next group absolute top-1/2 -right-4 z-10 -mt-6 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-white p-3 text-base shadow-white-volume sm:-right-6"
+              className="swiper-button-next group absolute top-1/2 -right-4 z-10 -mt-6 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-white p-3 text-base shadow-white-volume sm:-right-6"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 width="24"
                 height="24"
-                class="fill-jacarta-700 group-hover:fill-accent"
+                className="fill-jacarta-700 group-hover:fill-accent"
               >
                 <path fill="none" d="M0 0h24v24H0z" />
                 <path d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z" />

@@ -8,37 +8,34 @@ import styles from "../styles/Home.module.css";
 import CategoriesSection from "../components/sections/categories.jsx";
 import CollectionsSection from "../components/sections/collections.jsx";
 import PopularSellers from "../components/sections/popularSellers.jsx";
+import { isValidUrl } from "../helpers/frontend";
 
 export default function Home({ web3Handler, account, marketplace, nft }) {
   const collectionItems = [{}, {}, {}, {}, {}, {}];
-  console.log("marketplace", marketplace);
-  console.log("nft", nft)
-  console.log("Account", account)
   const [loading, setLoading] = useState(true);
   const [items, setItems] = useState([]);
 
   const loadMarketplaceItems = async () => {
     // Load all unsold items
     const itemCount = await marketplace.itemCount();
-    console.log("itemCount", itemCount);
-    let items = [];
-    for (let i = 1; i <= itemCount; i++) {
+    const tempItems = [];
+    for (let i = 3; i <= itemCount; i++) {
       const item = await marketplace.Items(i);
       console.log("item", item);
       if (!item.sold) {
-        try {
-          // get uri url from nft contract
-          const uri = await nft.tokenURI(item.tokenId);
-          console.log("uri", uri);
-          // use uri to fetch the nft metadata stored on ipfs
+        // get uri url from nft contract
+        const uri = await nft.tokenURI(item.tokenId);
+        console.log("uri", uri);
+        // use uri to fetch the nft metadata stored on ipfs
+        if (isValidUrl(uri)) {
           const response = await fetch(uri);
-          console.log(response);
+          console.log("response", response);
           if (response.ok === true) {
             const metadata = await response.json();
             // get total price of item (item price + fee)
             const totalPrice = await marketplace.getTotalPrice(item.itemId);
             // Add item to items array
-            items.push({
+            tempItems.push({
               totalPrice,
               itemId: item.itemId,
               seller: item.seller,
@@ -47,14 +44,12 @@ export default function Home({ web3Handler, account, marketplace, nft }) {
               image: metadata.image,
             });
           }
-        } catch (error) {
-          console.log("error", error);
         }
       }
     }
     setLoading(false);
-    console.log("items", items);
-    setItems(items);
+    console.log("items", tempItems);
+    setItems(tempItems);
   };
 
   const buyMarketItem = async (item) => {
@@ -71,7 +66,12 @@ export default function Home({ web3Handler, account, marketplace, nft }) {
   }, [marketplace]);
 
   return (
-    <Layout web3Handler={web3Handler} account={account} marketplace={marketplace} nft={nft}>
+    <Layout
+      web3Handler={web3Handler}
+      account={account}
+      marketplace={marketplace}
+      nft={nft}
+    >
       <main>
         <HeroBanner />
         <CollectionsSection />

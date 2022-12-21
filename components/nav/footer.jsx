@@ -1,27 +1,27 @@
 const Footer = ()=>{
     
     return(
-    <footer class="page-footer bg-white dark:bg-jacarta-900">
-      <div class="container">
-        <div class="grid grid-cols-6 gap-x-7 gap-y-14 pt-24 pb-12 md:grid-cols-12">
-          <div class="col-span-3 md:col-span-4">
+    <footer className="page-footer bg-white dark:bg-jacarta-900">
+      <div className="container">
+        <div className="grid grid-cols-6 gap-x-7 gap-y-14 pt-24 pb-12 md:grid-cols-12">
+          <div className="col-span-3 md:col-span-4">
             {/* <!-- Logo --> */}
-            <a href="index.html" class="mb-6 inline-block">
-              <img src="/img/logo.png" class="max-h-7 dark:hidden" alt="Xhibiter | NFT Marketplace" />
-              <img src="/img/logo_white.png" class="hidden max-h-7 dark:block" alt="Xhibiter | NFT Marketplace" />
+            <a href="index.html" className="mb-6 inline-block">
+              <img src="/img/logo.png" className="max-h-7 dark:hidden" alt="Xhibiter | NFT Marketplace" />
+              <img src="/img/logo_white.png" className="hidden max-h-7 dark:block" alt="Xhibiter | NFT Marketplace" />
             </a>
-            <p class="mb-12 dark:text-jacarta-300">
+            <p className="mb-12 dark:text-jacarta-300">
               Create, sell and collect truly rare digital artworks. Powered by blockchain technology.
             </p>
             {/* <!-- Socials --> */}
-            <div class="flex space-x-5">
-              <a href="#" class="group">
+            <div className="flex space-x-5">
+              <a href="#" className="group">
                 <svg
                   aria-hidden="true"
                   focusable="false"
                   data-prefix="fab"
                   data-icon="facebook"
-                  class="h-5 w-5 fill-jacarta-300 group-hover:fill-accent dark:group-hover:fill-white"
+                  className="h-5 w-5 fill-jacarta-300 group-hover:fill-accent dark:group-hover:fill-white"
                   role="img"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
@@ -31,13 +31,13 @@ const Footer = ()=>{
                   ></path>
                 </svg>
               </a>
-              <a href="#" class="group">
+              <a href="#" className="group">
                 <svg
                   aria-hidden="true"
                   focusable="false"
                   data-prefix="fab"
                   data-icon="twitter"
-                  class="h-5 w-5 fill-jacarta-300 group-hover:fill-accent dark:group-hover:fill-white"
+                  className="h-5 w-5 fill-jacarta-300 group-hover:fill-accent dark:group-hover:fill-white"
                   role="img"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
@@ -47,13 +47,13 @@ const Footer = ()=>{
                   ></path>
                 </svg>
               </a>
-              <a href="#" class="group">
+              <a href="#" className="group">
                 <svg
                   aria-hidden="true"
                   focusable="false"
                   data-prefix="fab"
                   data-icon="discord"
-                  class="h-5 w-5 fill-jacarta-300 group-hover:fill-accent dark:group-hover:fill-white"
+                  className="h-5 w-5 fill-jacarta-300 group-hover:fill-accent dark:group-hover:fill-white"
                   role="img"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 640 512"
@@ -63,13 +63,13 @@ const Footer = ()=>{
                   ></path>
                 </svg>
               </a>
-              <a href="#" class="group">
+              <a href="#" className="group">
                 <svg
                   aria-hidden="true"
                   focusable="false"
                   data-prefix="fab"
                   data-icon="instagram"
-                  class="h-5 w-5 fill-jacarta-300 group-hover:fill-accent dark:group-hover:fill-white"
+                  className="h-5 w-5 fill-jacarta-300 group-hover:fill-accent dark:group-hover:fill-white"
                   role="img"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512"
@@ -79,13 +79,13 @@ const Footer = ()=>{
                   ></path>
                 </svg>
               </a>
-              <a href="#" class="group">
+              <a href="#" className="group">
                 <svg
                   aria-hidden="true"
                   focusable="false"
                   data-prefix="fab"
                   data-icon="tiktok"
-                  class="h-5 w-5 fill-jacarta-300 group-hover:fill-accent dark:group-hover:fill-white"
+                  className="h-5 w-5 fill-jacarta-300 group-hover:fill-accent dark:group-hover:fill-white"
                   role="img"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512"
@@ -98,48 +98,48 @@ const Footer = ()=>{
             </div>
           </div>
 
-          <div class="col-span-full sm:col-span-3 md:col-span-2 md:col-start-7">
-            <h3 class="mb-6 font-display text-sm text-jacarta-700 dark:text-white">Marketplace</h3>
-            <ul class="flex flex-col space-y-1 dark:text-jacarta-300">
-              <li><a href="#" class="hover:text-accent dark:hover:text-white">All NFTs</a></li>
-              <li><a href="#" class="hover:text-accent dark:hover:text-white">Art</a></li>
-              <li><a href="#" class="hover:text-accent dark:hover:text-white">Music</a></li>
-              <li><a href="#" class="hover:text-accent dark:hover:text-white">Domain Names</a></li>
-              <li><a href="#" class="hover:text-accent dark:hover:text-white">Collectibles</a></li>
-              <li><a href="#" class="hover:text-accent dark:hover:text-white">Virtual World</a></li>
+          <div className="col-span-full sm:col-span-3 md:col-span-2 md:col-start-7">
+            <h3 className="mb-6 font-display text-sm text-jacarta-700 dark:text-white">Marketplace</h3>
+            <ul className="flex flex-col space-y-1 dark:text-jacarta-300">
+              <li><a href="#" className="hover:text-accent dark:hover:text-white">All NFTs</a></li>
+              <li><a href="#" className="hover:text-accent dark:hover:text-white">Art</a></li>
+              <li><a href="#" className="hover:text-accent dark:hover:text-white">Music</a></li>
+              <li><a href="#" className="hover:text-accent dark:hover:text-white">Domain Names</a></li>
+              <li><a href="#" className="hover:text-accent dark:hover:text-white">Collectibles</a></li>
+              <li><a href="#" className="hover:text-accent dark:hover:text-white">Virtual World</a></li>
             </ul>
           </div>
 
-          <div class="col-span-full sm:col-span-3 md:col-span-2">
-            <h3 class="mb-6 font-display text-sm text-jacarta-700 dark:text-white">Company</h3>
-            <ul class="flex flex-col space-y-1 dark:text-jacarta-300">
-              <li><a href="#" class="hover:text-accent dark:hover:text-white">Explore</a></li>
-              <li><a href="#" class="hover:text-accent dark:hover:text-white">About</a></li>
-              <li><a href="#" class="hover:text-accent dark:hover:text-white">Contact Us</a></li>
-              <li><a href="#" class="hover:text-accent dark:hover:text-white">Our Blog</a></li>
-              <li><a href="#" class="hover:text-accent dark:hover:text-white">FAQ</a></li>
+          <div className="col-span-full sm:col-span-3 md:col-span-2">
+            <h3 className="mb-6 font-display text-sm text-jacarta-700 dark:text-white">Company</h3>
+            <ul className="flex flex-col space-y-1 dark:text-jacarta-300">
+              <li><a href="#" className="hover:text-accent dark:hover:text-white">Explore</a></li>
+              <li><a href="#" className="hover:text-accent dark:hover:text-white">About</a></li>
+              <li><a href="#" className="hover:text-accent dark:hover:text-white">Contact Us</a></li>
+              <li><a href="#" className="hover:text-accent dark:hover:text-white">Our Blog</a></li>
+              <li><a href="#" className="hover:text-accent dark:hover:text-white">FAQ</a></li>
             </ul>
           </div>
 
-          <div class="col-span-full sm:col-span-3 md:col-span-2">
-            <h3 class="mb-6 font-display text-sm text-jacarta-700 dark:text-white">My Account</h3>
-            <ul class="flex flex-col space-y-1 dark:text-jacarta-300">
-              <li><a href="#" class="hover:text-accent dark:hover:text-white">Authors</a></li>
-              <li><a href="#" class="hover:text-accent dark:hover:text-white">Collection</a></li>
-              <li><a href="#" class="hover:text-accent dark:hover:text-white">Author Profile</a></li>
-              <li><a href="#" class="hover:text-accent dark:hover:text-white">Create Item</a></li>
+          <div className="col-span-full sm:col-span-3 md:col-span-2">
+            <h3 className="mb-6 font-display text-sm text-jacarta-700 dark:text-white">My Account</h3>
+            <ul className="flex flex-col space-y-1 dark:text-jacarta-300">
+              <li><a href="#" className="hover:text-accent dark:hover:text-white">Authors</a></li>
+              <li><a href="#" className="hover:text-accent dark:hover:text-white">Collection</a></li>
+              <li><a href="#" className="hover:text-accent dark:hover:text-white">Author Profile</a></li>
+              <li><a href="#" className="hover:text-accent dark:hover:text-white">Create Item</a></li>
             </ul>
           </div>
         </div>
-        <div class="flex flex-col items-center justify-between space-y-2 py-8 sm:flex-row sm:space-y-0">
-          <span class="text-sm dark:text-jacarta-400"
+        <div className="flex flex-col items-center justify-between space-y-2 py-8 sm:flex-row sm:space-y-0">
+          <span className="text-sm dark:text-jacarta-400"
             >&copy;
             Xhibiter — Made by
-            <a href="https://deothemes.com/" class="hover:text-accent dark:hover:text-white">DeoThemes</a></span
+            <a href="https://deothemes.com/" className="hover:text-accent dark:hover:text-white">DeoThemes</a></span
           >
-          <ul class="flex flex-wrap space-x-4 text-sm dark:text-jacarta-400">
-            <li><a href="#" class="hover:text-accent dark:hover:text-white">Terms and conditions</a></li>
-            <li><a href="#" class="hover:text-accent dark:hover:text-white">Privacy policy</a></li>
+          <ul className="flex flex-wrap space-x-4 text-sm dark:text-jacarta-400">
+            <li><a href="#" className="hover:text-accent dark:hover:text-white">Terms and conditions</a></li>
+            <li><a href="#" className="hover:text-accent dark:hover:text-white">Privacy policy</a></li>
           </ul>
         </div>
       </div>

@@ -6,7 +6,7 @@ const AssetGrid = ({assets})=>{
         {
             assets.map((asset,index)=>{
                 return(
-                    <AssetItem item={asset}/>
+                    <AssetItem item={asset} key={index}/>
                 )
             })
         }

@@ -3,8 +3,11 @@ import Router from "next/router";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { MagnifyingGlassIcon, ShoppingCartIcon } from '@heroicons/react/24/solid'
-import { Navbar, Nav, Button, Container, Toast } from 'react-bootstrap'
+import { Navbar, Nav, Button, Container } from 'react-bootstrap'
+// import Toast from "../snippets/Toast";
+import { ToastContainer, toast } from 'react-toastify';
 import styles from "../../styles/header.module.css";
+import 'react-toastify/dist/ReactToastify.css';
 import { categories } from "../../data/assets/categories";
 import { ethers } from "ethers";
 
@@ -14,12 +17,9 @@ const Header = ({web3Handler,account})=>{
   const [balance, setBalance] = useState();
   const [showToast,setShowToast] = useState(false);
   const [toastContent,setToastContent] = useState('');
-  console.log("web3Handler",web3Handler);
-  console.log("account",account);
 
   const onConnectAccount = (e)=>{
     e.preventDefault();
-    console.log("clicked...");
     web3Handler();
   }
 
@@ -27,10 +27,7 @@ const Header = ({web3Handler,account})=>{
 
     // Copy the text inside the text field
     navigator.clipboard.writeText(account);
-    setToastContent(`Copied account ID ${account}`);
-    setShowToast(true)
-    // Alert the copied text
-    //alert("Copied the text: " + account);
+    toast("Account ID copied to clipboard!");
   }
 
   const getBalance = async ()=>{
@@ -212,10 +209,10 @@ const Header = ({web3Handler,account})=>{
     <header className="js-page-header fixed top-0 z-20 w-full backdrop-blur transition-colors">
       <div className="flex items-center px-6 py-6 xl:px-24">
         {/* <!-- Logo --> */}
-        <a href="index.html" className="shrink-0">
+        <Link href="/" className="shrink-0">
           <img src="/img/logo.png" className="max-h-7 dark:hidden" alt="Xhibiter | NFT Marketplace" />
           <img src="/img/logo_white.png" className="hidden max-h-7 dark:block" alt="Xhibiter | NFT Marketplace" />
-        </a>
+        </Link>
 
         {/* <!-- Menu / Actions --> */}
         <div
@@ -335,7 +332,7 @@ const Header = ({web3Handler,account})=>{
                   {
                     categories.map((cat,catIndex)=>{
                       return(
-                        <li>
+                        <li key={catIndex}>
                         <Link href={`/categories/${cat.slug}`} className="flex items-center rounded-xl px-5 py-2 transition-colors hover:bg-jacarta-50 hover:text-accent focus:text-accent dark:hover:bg-jacarta-600">
                         <span className="mr-3 rounded-xl bg-[#E4FCF4] p-[0.375rem]" dangerouslySetInnerHTML={{__html: cat.image}}>
                           </span>
@@ -684,11 +681,12 @@ const Header = ({web3Handler,account})=>{
           </button>
         </div>
       </div>
-      <Toast onClose={()=>setShowToast(false)} show={showToast}>
+      {/* <Toast onClose={()=>setShowToast(false)} show={showToast}>
         <Toast.Header>
             {toastContent}
         </Toast.Header>
-      </Toast>
+      </Toast> */}
+      <ToastContainer />
     </header>
       </>
     )

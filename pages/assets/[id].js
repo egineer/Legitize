@@ -82,7 +82,7 @@ export default function SingleAsset() {
                   <div class="ml-auto flex space-x-2">
                     <div class="flex items-center space-x-1 rounded-xl border border-jacarta-100 bg-white py-2 px-4 dark:border-jacarta-600 dark:bg-jacarta-700">
                       <span
-                        class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
+                        class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../public/img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
                         data-tippy-content="Favorite"
                       >
                         <svg

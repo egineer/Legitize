@@ -31,7 +31,7 @@ const CreateAsset = ({ web3Handler, account, marketplace, nft }) => {
       try {
         const result = await client.add(file);
         console.log(result);
-        setImage(`https://ipfs.infura.io/ipfs/${result.path}`);
+        setImage(`https://ipfs.io/ipfs/${result.path}`);
       } catch (error) {
         console.log("ipfs image upload error: ", error);
       }
@@ -49,7 +49,7 @@ const CreateAsset = ({ web3Handler, account, marketplace, nft }) => {
     }
   };
   const mintThenList = async (result) => {
-    const uri = `https://ipfs.infura.io/ipfs/${result.path}`;
+    const uri = `https://ipfs.io/ipfs/${result.path}`;
     // mint nft
     // console.log(await nft.name());
     await (await nft.mint(uri)).wait();

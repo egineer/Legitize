@@ -2,22 +2,22 @@ const AssetItem = ({item})=>{
     return(
         <article>
         <div
-          class="block rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
+          className="block rounded-2.5xl border border-jacarta-100 bg-white p-[1.1875rem] transition-shadow hover:shadow-lg dark:border-jacarta-700 dark:bg-jacarta-700"
         >
-          <figure class="relative">
+          <figure className="relative">
             <a href="item.html">
               <img
                 src="/img/products/item_5.jpg"
                 alt="item 5"
-                class="w-full rounded-[0.625rem]"
+                className="w-full rounded-[0.625rem]"
                 loading="lazy"
               />
             </a>
             <div
-              class="absolute top-3 right-3 flex items-center space-x-1 rounded-md bg-white p-2 dark:bg-jacarta-700"
+              className="absolute top-3 right-3 flex items-center space-x-1 rounded-md bg-white p-2 dark:bg-jacarta-700"
             >
               <span
-                class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
+                className="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../public/img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0"
                 data-tippy-content="Favorite"
               >
                 <svg
@@ -25,7 +25,7 @@ const AssetItem = ({item})=>{
                   viewBox="0 0 24 24"
                   width="24"
                   height="24"
-                  class="h-4 w-4 fill-jacarta-500 hover:fill-red dark:fill-jacarta-200 dark:hover:fill-red"
+                  className="h-4 w-4 fill-jacarta-500 hover:fill-red dark:fill-jacarta-200 dark:hover:fill-red"
                 >
                   <path fill="none" d="M0 0H24V24H0z" />
                   <path
@@ -33,15 +33,15 @@ const AssetItem = ({item})=>{
                   />
                 </svg>
               </span>
-              <span class="text-sm dark:text-jacarta-200">15</span>
+              <span className="text-sm dark:text-jacarta-200">15</span>
             </div>
-            <div class="absolute left-3 -bottom-3">
-              <div class="flex -space-x-2">
+            <div className="absolute left-3 -bottom-3">
+              <div className="flex -space-x-2">
                 <a href="#">
                   <img
                     src="/img/avatars/creator_1.png"
                     alt="creator"
-                    class="h-6 w-6 rounded-full border-2 border-white hover:border-accent dark:border-jacarta-600 dark:hover:border-accent"
+                    className="h-6 w-6 rounded-full border-2 border-white hover:border-accent dark:border-jacarta-600 dark:hover:border-accent"
                     data-tippy-content="Creator: Sussygirl"
                   />
                 </a>
@@ -49,23 +49,23 @@ const AssetItem = ({item})=>{
                   <img
                     src="/img/avatars/owner_1.png"
                     alt="owner"
-                    class="h-6 w-6 rounded-full border-2 border-white hover:border-accent dark:border-jacarta-600 dark:hover:border-accent"
+                    className="h-6 w-6 rounded-full border-2 border-white hover:border-accent dark:border-jacarta-600 dark:hover:border-accent"
                     data-tippy-content="Owner: Sussygirl"
                   />
                 </a>
               </div>
             </div>
           </figure>
-          <div class="mt-7 flex items-center justify-between">
+          <div className="mt-7 flex items-center justify-between">
             <a href="item.html">
-              <span class="font-display text-base text-jacarta-700 hover:text-accent dark:text-white"
+              <span className="font-display text-base text-jacarta-700 hover:text-accent dark:text-white"
                 >Flourishing Cat #180</span
               >
             </a>
-            <div class="dropup rounded-full hover:bg-jacarta-100 dark:hover:bg-jacarta-600">
+            <div className="dropup rounded-full hover:bg-jacarta-100 dark:hover:bg-jacarta-600">
               <a
                 href="#"
-                class="dropdown-toggle inline-flex h-8 w-8 items-center justify-center text-sm"
+                className="dropdown-toggle inline-flex h-8 w-8 items-center justify-center text-sm"
                 role="button"
                 id="itemActions"
                 data-bs-toggle="dropdown"
@@ -77,7 +77,7 @@ const AssetItem = ({item})=>{
                   viewBox="0 0 16 4"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  class="fill-jacarta-500 dark:fill-jacarta-200"
+                  className="fill-jacarta-500 dark:fill-jacarta-200"
                 >
                   <circle cx="2" cy="2" r="2" />
                   <circle cx="8" cy="2" r="2" />
@@ -85,36 +85,36 @@ const AssetItem = ({item})=>{
                 </svg>
               </a>
               <div
-                class="dropdown-menu dropdown-menu-end z-10 hidden min-w-[200px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl dark:bg-jacarta-800"
+                className="dropdown-menu dropdown-menu-end z-10 hidden min-w-[200px] whitespace-nowrap rounded-xl bg-white py-4 px-2 text-left shadow-xl dark:bg-jacarta-800"
                 aria-labelledby="itemActions"
               >
                 <button
-                  class="block w-full rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
+                  className="block w-full rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
                 >
                   New bid
                 </button>
-                <hr class="my-2 mx-4 h-px border-0 bg-jacarta-100 dark:bg-jacarta-600" />
+                <hr className="my-2 mx-4 h-px border-0 bg-jacarta-100 dark:bg-jacarta-600" />
                 <button
-                  class="block w-full rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
+                  className="block w-full rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
                 >
                   Refresh Metadata
                 </button>
                 <button
-                  class="block w-full rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
+                  className="block w-full rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
                 >
                   Share
                 </button>
                 <button
-                  class="block w-full rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
+                  className="block w-full rounded-xl px-5 py-2 text-left font-display text-sm transition-colors hover:bg-jacarta-50 dark:text-white dark:hover:bg-jacarta-600"
                 >
                   Report
                 </button>
               </div>
             </div>
           </div>
-          <div class="mt-2 text-sm">
-            <span class="mr-1 text-jacarta-700 dark:text-jacarta-200">From 8.49 ETH</span>
-            <span class="text-jacarta-500 dark:text-jacarta-300">2/8</span>
+          <div className="mt-2 text-sm">
+            <span className="mr-1 text-jacarta-700 dark:text-jacarta-200">From 8.49 ETH</span>
+            <span className="text-jacarta-500 dark:text-jacarta-300">2/8</span>
           </div>
 
           <div className="mt-8 flex items-center justify-between">
