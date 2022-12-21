@@ -1,11 +1,12 @@
 import "../styles/globals.css";
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import { SessionProvider } from "next-auth/react";
 
 import MarketplaceAbi from "../nft/contractsData/Legitize-goerli.json";
 import MarketplaceAddress from "../nft/contractsData/Legitize-goerli_address.json";
 import NFTAbi from "../nft/contractsData/NFTMint-goerli.json";
 import NFTAddress from "../nft/contractsData/nftMint-goerli_address.json";
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import { ethers } from "ethers";
 
 function MyApp({ Component, pageProps }) {
@@ -48,6 +49,10 @@ function MyApp({ Component, pageProps }) {
     setNFT(nft);
     setLoading(false);
   };
+
+useEffect(() =>{
+  web3Handler();
+}, [])
 
   return (
     <SessionProvider session={pageProps.session}>

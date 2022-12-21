@@ -12,8 +12,11 @@ import PopularSellers from "../components/sections/popularSellers.jsx";
 export default function Home({ web3Handler, account, marketplace, nft }) {
   const collectionItems = [{}, {}, {}, {}, {}, {}];
   console.log("marketplace", marketplace);
+  console.log("nft", nft)
+  console.log("Account", account)
   const [loading, setLoading] = useState(true);
   const [items, setItems] = useState([]);
+
   const loadMarketplaceItems = async () => {
     // Load all unsold items
     const itemCount = await marketplace.itemCount();
@@ -56,7 +59,7 @@ export default function Home({ web3Handler, account, marketplace, nft }) {
 
   const buyMarketItem = async (item) => {
     await (
-      await marketplace.purchaseItem(item.itemId, { value: item.totalPrice })
+      await marketplace.buyItem(item.itemId, { value: item.totalPrice })
     ).wait();
     loadMarketplaceItems();
   };
@@ -68,7 +71,7 @@ export default function Home({ web3Handler, account, marketplace, nft }) {
   }, [marketplace]);
 
   return (
-    <Layout web3Handler={web3Handler} account={account}>
+    <Layout web3Handler={web3Handler} account={account} marketplace={marketplace} nft={nft}>
       <main>
         <HeroBanner />
         <CollectionsSection />

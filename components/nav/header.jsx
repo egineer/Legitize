@@ -1,14 +1,19 @@
 import { useSession } from "next-auth/react";
 import Router from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { MagnifyingGlassIcon, ShoppingCartIcon } from '@heroicons/react/24/solid'
+import { Navbar, Nav, Button, Container, Toast } from 'react-bootstrap'
 import styles from "../../styles/header.module.css";
 import { categories } from "../../data/assets/categories";
+import { ethers } from "ethers";
 
 const Header = ({web3Handler,account})=>{
 
   const { status, data } = useSession();
+  const [balance, setBalance] = useState();
+  const [showToast,setShowToast] = useState(false);
+  const [toastContent,setToastContent] = useState('');
   console.log("web3Handler",web3Handler);
   console.log("account",account);
 
@@ -18,6 +23,34 @@ const Header = ({web3Handler,account})=>{
     web3Handler();
   }
 
+  const clipboardCopyAccount = ()=>{
+
+    // Copy the text inside the text field
+    navigator.clipboard.writeText(account);
+    setToastContent(`Copied account ID ${account}`);
+    setShowToast(true)
+    // Alert the copied text
+    //alert("Copied the text: " + account);
+  }
+
+  const getBalance = async ()=>{
+    const network = 'goerli' // use goerli testnet
+    const provider = ethers.getDefaultProvider(network)
+    const address = account
+    provider.getBalance(address).then((balance) => {
+    // convert a currency unit from wei to ether
+    const balanceInEth = ethers.utils.formatEther(balance)
+    const rounded_balanceInEth = Math.round(balanceInEth * 10000)/10000
+    setBalance(rounded_balanceInEth);
+    })
+
+  }
+
+  useEffect(()=>{
+    if(account){
+      getBalance()
+    }
+  }, [account])
   let userProfileDropdown = (<div>Loading...</div>)
 
   if(status==="unauthenticated"){
@@ -60,26 +93,41 @@ const Header = ({web3Handler,account})=>{
     userProfileDropdown = 
     (
       <>
-        <button
+          {account ? (
+                      <button 
           className="js-copy-clipboard my-4 flex select-none items-center whitespace-nowrap px-5 font-display leading-none text-jacarta-700 dark:text-white"
           data-tippy-content="Copy"
+          id = "userAdress"
+          onClick={clipboardCopyAccount}
         >
-          <span className="max-w-[10rem] overflow-hidden text-ellipsis"
-            >0x7a86c0b064171007716bbd6af96676935799a63e</span
-          >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            width="24"
-            height="24"
-            className="ml-1 mb-px h-4 w-4 fill-jacarta-500 dark:fill-jacarta-300"
-          >
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path
-              d="M7 7V3a1 1 0 0 1 1-1h13a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-4v3.993c0 .556-.449 1.007-1.007 1.007H3.007A1.006 1.006 0 0 1 2 20.993l.003-12.986C2.003 7.451 2.452 7 3.01 7H7zm2 0h6.993C16.549 7 17 7.449 17 8.007V15h3V4H9v3zM4.003 9L4 20h11V9H4.003z"
-            />
-          </svg>
-        </button>
+                <span className="max-w-[10rem] overflow-hidden text-ellipsis">
+                  <Nav.Link
+                        href={`https://etherscan.io/address/${account}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="button nav-button btn-sm mx-4">
+                        {account.slice(0, 5) + '...' + account.slice(38, 42)}
+
+                    </Nav.Link>
+                  </span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  className="ml-1 mb-px h-4 w-4 fill-jacarta-500 dark:fill-jacarta-300"
+                  >
+                    <path fill="none" d="M0 0h24v24H0z" />
+                    <path
+                      d="M7 7V3a1 1 0 0 1 1-1h13a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-4v3.993c0 .556-.449 1.007-1.007 1.007H3.007A1.006 1.006 0 0 1 2 20.993l.003-12.986C2.003 7.451 2.452 7 3.01 7H7zm2 0h6.993C16.549 7 17 7.449 17 8.007V15h3V4H9v3zM4.003 9L4 20h11V9H4.003z"
+                    />
+                </svg>
+                </button>
+            ) : (
+               <span className="max-w-[10rem] overflow-hidden text-ellipsis">
+               <Button onClick={web3Handler} variant="outline-light" className="my-4 flex select-none items-center whitespace-nowrap px-5 font-display leading-none text-jacarta-700 dark:text-white">Connect Wallet</Button>
+               </span> 
+            )}
 
         <div className="mx-5 mb-6 rounded-lg border border-jacarta-100 p-4 dark:border-jacarta-600">
           <span className="text-sm font-medium tracking-tight dark:text-jacarta-200">Balance</span>
@@ -99,7 +147,9 @@ const Header = ({web3Handler,account})=>{
               <path fill="#8A92B2" d="M420.1 1078.7l539.7 760.6v-441.7z"></path>
               <path fill="#62688F" d="M959.8 1397.6v441.7l540.1-760.6z"></path>
             </svg>
-            <span className="text-lg font-bold text-green">10 ETH</span>
+            <span className="text-lg font-bold text-green">
+              {account? (<span>{balance}G.ETH</span>):(<h1>No balance</h1>)}
+            </span>
           </div>
         </div>
         <a
@@ -634,6 +684,11 @@ const Header = ({web3Handler,account})=>{
           </button>
         </div>
       </div>
+      <Toast onClose={()=>setShowToast(false)} show={showToast}>
+        <Toast.Header>
+            {toastContent}
+        </Toast.Header>
+      </Toast>
     </header>
       </>
     )
