@@ -14,10 +14,10 @@ def generate_art(url, img_id):
     
     nft_save_link = os.path.join(nft_folder, nft_name)
     
-    resized_img_link = resizeImage(url, img_id)  #Resize the image for convenience
+    _70x70_resizedImgLInk, _500x500_resizedImgLInk = resizeImage(url, img_id)  #Resize the image for convenience
 
     img_id, code_link, nft_code = generateCode(img_id)  #Generate the code for the NFT
-    main_img = Image.open(resized_img_link)   #Open the resized image
+    main_img = Image.open(_500x500_resizedImgLInk)   #Open the resized image
     code_img = Image.open(code_link)          #Open the code image
     
     w_main, h_main = main_img.size                      #Get the width and Heigth of the main image after resizing
@@ -28,20 +28,34 @@ def generate_art(url, img_id):
     
     nft_img.save(nft_save_link)
     
-    return nft_save_link, code_link, nft_code
+    return nft_save_link, code_link, nft_code, _70x70_resizedImgLInk
 
 def resizeImage(url, img_id):
     site_img_display_folder = Path('public/img/nfts/resized')
+    _70x70Thumbs = Path('public/img/nfts/resized_70')
     if(isImage(url)):
         #Rename the image and save it
         renamed_img_url, name = imgConvert(url, img_id)
+
+        #Create extentions for various file formats
+        _70x70 = '70x70_'
+        _500x500 = '500x500_'
+
+        name_70x70 = _70x70 + name
+        name_500x500 = _500x500 + name
+
         #creating and saving small image
-        image_thumb = os.path.join(site_img_display_folder,name)
-        image = Image.open(renamed_img_url)
-        image.thumbnail((500,500),Image.ANTIALIAS)
-        image.save(image_thumb,optimize=True,quality=95)
+        image_thumb_70x70 = os.path.join(_70x70Thumbs,name_70x70)
+        image_thumb_500x500 = os.path.join(site_img_display_folder,name_500x500)
+
+        image1 = Image.open(renamed_img_url)
+        image2 = image1.copy()
+        image1.thumbnail((70,70),Image.ANTIALIAS)
+        image2.thumbnail((500,500),Image.ANTIALIAS)
+        image1.save(image_thumb_70x70,optimize=True,quality=95)
+        image2.save(image_thumb_500x500,optimize=True,quality=95)
         
-        return image_thumb
+        return image_thumb_70x70, image_thumb_500x500
 
 def imgConvert(url, img_id):
     renamed_img_folder = Path('public/img/nfts/renamed')
@@ -103,14 +117,18 @@ if __name__ == "__main__":
     img_link = input[1]
     img_id = input[2]
 
+    # img_link = "public\\img\\login.jpg"
+    # img_id = "Diamond"
+
     srcPath = Path(img_link)
     output = []
     # print(input[1], input[2])
-    nft_link, code_link, code = generate_art(srcPath, img_id)
+    nft_link, code_link, code, smallThumblink = generate_art(srcPath, img_id)
 
     output.append(nft_link)
     output.append(code_link)
     output.append(code)
+    output.append(smallThumblink)
     print(json.dumps(output))
 
     sys.stdout.flush()

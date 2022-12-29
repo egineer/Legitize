@@ -11,7 +11,7 @@ const Footer = ()=>{
               <img src="/img/logo_white.png" className="hidden max-h-7 dark:block" alt="Xhibiter | NFT Marketplace" />
             </a>
             <p className="mb-12 dark:text-jacarta-300">
-              Create, sell and collect truly rare digital artworks. Powered by blockchain technology.
+              Create, sell and collect NFTs with real physical value. Powered by blockchain technology.
             </p>
             {/* <!-- Socials --> */}
             <div className="flex space-x-5">
@@ -103,21 +103,21 @@ const Footer = ()=>{
             <ul className="flex flex-col space-y-1 dark:text-jacarta-300">
               <li><a href="#" className="hover:text-accent dark:hover:text-white">All NFTs</a></li>
               <li><a href="#" className="hover:text-accent dark:hover:text-white">Art</a></li>
-              <li><a href="#" className="hover:text-accent dark:hover:text-white">Music</a></li>
-              <li><a href="#" className="hover:text-accent dark:hover:text-white">Domain Names</a></li>
-              <li><a href="#" className="hover:text-accent dark:hover:text-white">Collectibles</a></li>
-              <li><a href="#" className="hover:text-accent dark:hover:text-white">Virtual World</a></li>
+              <li><a href="#" className="hover:text-accent dark:hover:text-white">Real Estate</a></li>
+              <li><a href="#" className="hover:text-accent dark:hover:text-white">Luxary Accessories</a></li>
+              <li><a href="#" className="hover:text-accent dark:hover:text-white">Luxary Vehicles</a></li>
+              <li><a href="#" className="hover:text-accent dark:hover:text-white">Haute Couture</a></li>
             </ul>
           </div>
 
           <div className="col-span-full sm:col-span-3 md:col-span-2">
             <h3 className="mb-6 font-display text-sm text-jacarta-700 dark:text-white">Company</h3>
             <ul className="flex flex-col space-y-1 dark:text-jacarta-300">
-              <li><a href="#" className="hover:text-accent dark:hover:text-white">Explore</a></li>
-              <li><a href="#" className="hover:text-accent dark:hover:text-white">About</a></li>
-              <li><a href="#" className="hover:text-accent dark:hover:text-white">Contact Us</a></li>
-              <li><a href="#" className="hover:text-accent dark:hover:text-white">Our Blog</a></li>
-              <li><a href="#" className="hover:text-accent dark:hover:text-white">FAQ</a></li>
+              <li><a href="/collections" className="hover:text-accent dark:hover:text-white">Explore</a></li>
+              <li><a href="/collections/slug" className="hover:text-accent dark:hover:text-white">About</a></li>
+              <li><a href="/collections/slug" className="hover:text-accent dark:hover:text-white">Contact Us</a></li>
+              <li><a href="/collections/slug" className="hover:text-accent dark:hover:text-white">Our Blog</a></li>
+              <li><a href="/collections/slug" className="hover:text-accent dark:hover:text-white">FAQ</a></li>
             </ul>
           </div>
 
@@ -134,8 +134,8 @@ const Footer = ()=>{
         <div className="flex flex-col items-center justify-between space-y-2 py-8 sm:flex-row sm:space-y-0">
           <span className="text-sm dark:text-jacarta-400"
             >&copy;
-            Xhibiter — Made by
-            <a href="https://deothemes.com/" className="hover:text-accent dark:hover:text-white">DeoThemes</a></span
+            Legitize — Made by
+            <a href="https://jordihako.com/" className="hover:text-accent dark:hover:text-white"> Jordi Hako</a></span
           >
           <ul className="flex flex-wrap space-x-4 text-sm dark:text-jacarta-400">
             <li><a href="#" className="hover:text-accent dark:hover:text-white">Terms and conditions</a></li>
