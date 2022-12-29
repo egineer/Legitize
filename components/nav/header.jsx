@@ -150,7 +150,7 @@ const Header = ({web3Handler,account})=>{
           </div>
         </div>
         <a
-          href="user.html"
+          href="/profile/id"
           className="flex items-center space-x-2 rounded-xl px-5 py-2 transition-colors hover:bg-jacarta-50 hover:text-accent focus:text-accent dark:hover:bg-jacarta-600"
         >
           <svg
@@ -167,6 +167,27 @@ const Header = ({web3Handler,account})=>{
           </svg>
           <span className="mt-1 font-display text-sm text-jacarta-700 dark:text-white">My Profile</span>
         </a>
+        {/*Jordi's added code*/}
+        <a
+          href="/panel"
+          className="flex items-center space-x-2 rounded-xl px-5 py-2 transition-colors hover:bg-jacarta-50 hover:text-accent focus:text-accent dark:hover:bg-jacarta-600"
+        >
+          {/**New svg addition */}
+          <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          className="h-4 w-4 fill-jacarta-700 transition-colors dark:fill-white"
+          >
+          <path fill="none" d="M0 0h24v24H0z"></path>
+          <path d="M13 3v6h8V3m-8 18h8V11h-8M3 21h8v-6H3m0-2h8V3H3v10z" />
+          </svg>
+          {/**New svg addition */}
+          <span className="mt-1 font-display text-sm text-jacarta-700 dark:text-white">My Dashboard</span>
+        </a>
+        {/*Jordi's added code ended*/}
         <a
           href="edit-profile.html"
           className="flex items-center space-x-2 rounded-xl px-5 py-2 transition-colors hover:bg-jacarta-50 hover:text-accent focus:text-accent dark:hover:bg-jacarta-600"
@@ -372,7 +393,7 @@ const Header = ({web3Handler,account})=>{
                 >
                   <li>
                     <a
-                      href="help-center.html"
+                      href="/resources/help"
                       className="flex items-center rounded-xl px-5 py-2 transition-colors hover:bg-jacarta-50 hover:text-accent focus:text-accent dark:hover:bg-jacarta-600"
                     >
                       <span className="font-display text-sm text-jacarta-700 dark:text-white">Help</span>

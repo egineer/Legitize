@@ -12,6 +12,7 @@ export async function createArt(nft_url, nft_id, userId) {
     nft_id,
   ]);
   let data_received;
+  let obj = {};
 
   //Receiver the result from python#
   python_process.stdout.on("data", async (data) => {
@@ -33,8 +34,8 @@ export async function createArt(nft_url, nft_id, userId) {
 //Returns the NFT link, the code link, and the Code coordinates to be saved to the database.
 export function extractData(dir) {
   const obj = JSON.parse(dir);
-  console.log("NFT Link:", obj[0], "\nCode Link:", obj[1], "\nCode:", obj[2]);
-  return obj[0], obj[1], obj[2];
+  //console.log("NFT Link:", obj[0], "\nCode Link:", obj[1], "\nCode:", obj[2], "\n70Thumb Link:", obj[3]);
+  return obj;
 }
 
 // const nft_url = "public\\img\\login.jpg";

@@ -3,12 +3,60 @@ import styles from "../styles/layout.module.css";
 import Header from "./nav/header";
 import Footer from "./nav/footer";
 import { AcademicCapIcon } from "@heroicons/react/24/solid";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import MarketplaceAbi from "../nft/contractsData/Legitize-goerli.json";
+import MarketplaceAddress from "../nft/contractsData/Legitize-goerli_address.json";
+import NFTAbi from "../nft/contractsData/NFTMint-goerli.json";
+import NFTAddress from "../nft/contractsData/nftMint-goerli_address.json";
+import { ethers } from "ethers";
 
 const name = "Ricano Dago";
 export const siteTitle = "Next.js Sample Website";
 
-export default function Layout({ children, web3Handler , account , marketplace, nft}) {
+export default function Layout({ children}) {
+
+  const [account, setAccount] = useState(null);
+  const [nft, setNFT] = useState({});
+  const [marketplace, setMarketplace] = useState(null);
+  // MetaMask Login/Connect
+  const web3Handler = async () => {
+    console.log("called??");
+    const accounts = await window.ethereum.request({
+      method: "eth_requestAccounts",
+    });
+    setAccount(accounts[0]);
+    console.log(accounts);
+    // Get provider from Metamask
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    // Set signer
+    const signer = provider.getSigner();
+
+    window.ethereum.on("chainChanged", (chainId) => {
+      window.location.reload();
+    });
+
+    window.ethereum.on("accountsChanged", async function (accounts) {
+      setAccount(accounts[0]);
+      await web3Handler();
+    });
+    loadContracts(signer);
+  };
+  const loadContracts = async (signer) => {
+    // Get deployed copies of contracts
+    const marketplace = new ethers.Contract(
+      MarketplaceAddress.address,
+      MarketplaceAbi.abi,
+      signer
+    );
+    setMarketplace(marketplace);
+    const nft = new ethers.Contract(NFTAddress.address, NFTAbi.abi, signer);
+    setNFT(nft);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    web3Handler();
+  }, []);
 
   //Jordi's edit start. I added this function here for the layout to list the items. 
   console.log("marketplace", marketplace);
