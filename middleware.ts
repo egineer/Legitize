@@ -14,4 +14,4 @@ export default withAuth({
   },
 })
 
-export const config = { matcher: ["/admin", "/panel/:path*"] }
+export const config = { matcher: ["/admin", "/panel/:path*","/api/nft/art/create"] }

@@ -18,6 +18,9 @@
 # production
 /build
 
+#nfts
+/public/img/nfts
+
 # misc
 .DS_Store
 *.pem
@@ -30,6 +33,7 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
 
 # vercel
 .vercel

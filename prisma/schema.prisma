@@ -21,6 +21,7 @@ model User {
   profile   Profile?
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
+  assets    Asset[]
 }
 
 model Profile {
@@ -37,6 +38,20 @@ model Profile {
 enum Role {
   USER
   ADMIN
+}
+
+model Asset {
+  id              Int      @id @default(autoincrement())
+  artId           String?  @unique
+  assetId         String?  @unique
+  name            String?
+  image           String?
+  thumbnailMedium String?
+  thumbnailSmall  String?
+  user            User     @relation(fields: [userId], references: [id])
+  userId          Int
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @default(now())
 }
 
 model Post {
