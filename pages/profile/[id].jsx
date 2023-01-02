@@ -17,7 +17,7 @@ const Profile = ()=>{
         <img src="/img/user/banner.jpg" alt="banner" class="h-[18.75rem] object-cover" />
       </div>
 
-      <UserProfile/>
+      <UserProfile account = {account}/>
 
       <section class="relative py-24 pt-20">
         <picture class="pointer-events-none absolute inset-0 -z-10 dark:hidden">
