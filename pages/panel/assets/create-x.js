@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import Layout from "../../../components/layout";
 import { ethers } from "ethers";
 import { create as ipfsHttpClient } from "ipfs-http-client";
@@ -23,20 +22,14 @@ const client = ipfsHttpClient({
 });
 
 const CreateAsset = ({ web3Handler, account, marketplace, nft }) => {
-  const router = useRouter();
   console.log("nft", nft);
   const [creatingAsset, setCreatingAsset] = useState(false);
   const [instantStatus, setInstantStatus] = useState("");
   const [image, setImage] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
-  const [selectedProofs, setSelectedProofs] = useState("");
   const [price, setPrice] = useState(null);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [createdItemId, setCreatedItemId] = useState("");
-
-  const [redirect, setRedirect] = useState("");
-
   const uploadToIPFS = async (event) => {
     event.preventDefault();
     const file = event.target.files[0];
@@ -56,14 +49,6 @@ const CreateAsset = ({ web3Handler, account, marketplace, nft }) => {
     const file = event.target.files[0];
     if (typeof file !== "undefined") {
       setSelectedFile(file);
-    }
-  };
-
-  const handleProofsUpload = async (event) => {
-    event.preventDefault();
-    const proofs = event.target.files;
-    if (typeof proofs !== "undefined") {
-      setSelectedProofs(proofs);
     }
   };
 
@@ -88,22 +73,17 @@ const CreateAsset = ({ web3Handler, account, marketplace, nft }) => {
     return null;
   };
 
-  const uploadAssetData = async () => {
-    if (!selectedFile || !name || !description || !price || !selectedProofs)
-      return;
+  const createNFT = async () => {
+    if (!selectedFile || !name || !description || !price) return;
     setCreatingAsset(true);
     try {
       // Upload Image to create NFT art
-      setInstantStatus("Uploading your photo...");
-      await waitTimeout(2000);
+      setInstantStatus("Uploading photo...");
+      await waitTimeout(5000);
 
       const formData = new FormData();
       // Image Data
       formData.append("image", selectedFile);
-      // formData.append("proofs", selectedProofs);
-      formData.append("name", name);
-      formData.append("description", description);
-      formData.append("price", price);
       const config = {
         headers: { "content-type": "multipart/form-data" },
         onUploadProgress: (event) => {
@@ -115,7 +95,7 @@ const CreateAsset = ({ web3Handler, account, marketplace, nft }) => {
       };
 
       const response = await axios.post(
-        "/api/nft/asset/create",
+        "/api/nft/art/create",
         formData,
         config
       );
@@ -123,50 +103,41 @@ const CreateAsset = ({ web3Handler, account, marketplace, nft }) => {
       if (
         response.data &&
         response.data.status === "success" &&
-        response.data.itemId
+        response.data.artId
       ) {
-        const itemId = response.data.itemId;
-        setInstantStatus("Submitting your proofs...");
-        await waitTimeout(1000);
-
-        const formData = new FormData();
-        // Proofs Files
-        console.log(selectedProofs);
-        for (let i = 0; i < selectedProofs.length; i++) {
-          const file = selectedProofs[i];
-          formData.append("proofs", file);
+        setInstantStatus("Creating your art...");
+        // Check Progress of Creation of Art
+        let artData = null;
+        while (artData === null) {
+          await waitTimeout(1000);
+          artData = await checkAssetData(response.data.artId);
+          console.log("artData", artData);
         }
-        // formData.append("proofs", selectedProofs);
-        formData.append("itemId", itemId);
-        console.log("Submitting your proofs...");
-        const config = {
-          headers: { "content-type": "multipart/form-data" },
-          onUploadProgress: (event) => {
-            console.log(
-              `Current progress:`,
-              Math.round((event.loaded * 100) / event.total)
-            );
-          },
-        };
-
-        const res = await axios.post(
-          "/api/nft/asset/proofs/add",
-          formData,
-          config
-        );
-        console.log("res", res);
-        if (res.data && res.data.status === "success") {
-          setInstantStatus(
-            "Your asset was submitted sucessfully ans is pending for approval!"
+        await waitTimeout(2000);
+        // Upload Image to IPFS
+        setInstantStatus("Adding your NFT to blockchain...");
+        try {
+          // download art from marketplace server
+          const config = {
+            headers: { "response-type": "blob" },
+          };
+          const fileData = await axios.get(artData.image, config);
+          console.log("fileData", fileData.data);
+          const result = await client.add(fileData.data);
+          console.log(result);
+          setImage(`https://ipfs.io/ipfs/${result.path}`);
+          // Create Asset in Marketplace with the Art Created
+          const res = await client.add(
+            JSON.stringify({ image, price, name, description })
           );
+          setInstantStatus("Sit tight. Your NFT is being finalized...");
+          await mintItem(res);
+          await waitTimeout(1000);
+          setInstantStatus("Congrats! Your NFT was created sucessfully!");
           await waitTimeout(2000);
           setCreatingAsset(false);
-          // Redirect to Panel
-          setRedirect("/panel");
-        } else {
-          setInstantStatus("An error occured while processing your request.");
-          await waitTimeout(2000);
-          setCreatingAsset(false);
+        } catch (error) {
+          console.log("ipfs image upload error: ", error);
         }
       }
 
@@ -201,15 +172,11 @@ const CreateAsset = ({ web3Handler, account, marketplace, nft }) => {
     await (await marketplace.listItem(nft.address, id, listingPrice)).wait();
   };
 
-  /* USE EFFECTS */
-  useEffect(() => {
-    if (redirect) {
-      // Make sure we're in the browser
-      if (typeof window !== "undefined") {
-        router.push(redirect);
-      }
-    }
-  }, [redirect]);
+  // useEffect(() => {
+  //   if (creatingAsset) {
+  //     createNFT();
+  //   }
+  // }, [creatingAsset]);
 
   const pageContent = (
     <section class="relative py-24">
@@ -228,7 +195,7 @@ const CreateAsset = ({ web3Handler, account, marketplace, nft }) => {
         <div class="mx-auto max-w-[48.125rem]">
           <div class="mb-6">
             <label class="mb-2 block font-display text-jacarta-700 dark:text-white">
-              Asset Image
+              Image, Video, Audio, or 3D Model
               <span class="text-red">*</span>
             </label>
             <p class="mb-3 text-2xs dark:text-jacarta-300">
@@ -254,7 +221,8 @@ const CreateAsset = ({ web3Handler, account, marketplace, nft }) => {
                       <path d="M16 13l6.964 4.062-2.973.85 2.125 3.681-1.732 1-2.125-3.68-2.223 2.15L16 13zm-2-7h2v2h5a1 1 0 0 1 1 1v4h-2v-3H10v10h4v2H9a1 1 0 0 1-1-1v-5H6v-2h2V9a1 1 0 0 1 1-1h5V6zM4 14v2H2v-2h2zm0-4v2H2v-2h2zm0-4v2H2V6h2zm0-4v2H2V2h2zm4 0v2H6V2h2zm4 0v2h-2V2h2zm4 0v2h-2V2h2z" />
                     </svg>
                     <p class="mx-auto max-w-xs text-xs dark:text-jacarta-300">
-                      JPG or PNG Max size: 100 MB
+                      JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB, GLTF.
+                      Max size: 100 MB
                     </p>
                   </>
                 )}
@@ -266,51 +234,6 @@ const CreateAsset = ({ web3Handler, account, marketplace, nft }) => {
                 id="file-upload"
                 class="absolute inset-0 z-20 cursor-pointer opacity-0"
                 onChange={handleFileUpload}
-              />
-            </div>
-          </div>
-
-          <div class="mb-6">
-            <label class="mb-2 block font-display text-jacarta-700 dark:text-white">
-              Proofs of Ownership
-              <span class="text-red">*</span>
-            </label>
-            <p class="mb-3 text-2xs dark:text-jacarta-300">
-              Drag or choose your files to upload
-            </p>
-
-            <div class="group relative flex max-w-md flex-col items-center justify-center rounded-lg border-2 border-dashed border-jacarta-100 bg-white py-20 px-5 text-center dark:border-jacarta-600 dark:bg-jacarta-700">
-              <div class="relative z-10 cursor-pointer">
-                {selectedProofs ? (
-                  <>
-                    <p>Files Selected</p>
-                  </>
-                ) : (
-                  <>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      width="24"
-                      height="24"
-                      class="mb-4 inline-block fill-jacarta-500 dark:fill-white"
-                    >
-                      <path fill="none" d="M0 0h24v24H0z" />
-                      <path d="M16 13l6.964 4.062-2.973.85 2.125 3.681-1.732 1-2.125-3.68-2.223 2.15L16 13zm-2-7h2v2h5a1 1 0 0 1 1 1v4h-2v-3H10v10h4v2H9a1 1 0 0 1-1-1v-5H6v-2h2V9a1 1 0 0 1 1-1h5V6zM4 14v2H2v-2h2zm0-4v2H2v-2h2zm0-4v2H2V6h2zm0-4v2H2V2h2zm4 0v2H6V2h2zm4 0v2h-2V2h2zm4 0v2h-2V2h2z" />
-                    </svg>
-                    <p class="mx-auto max-w-xs text-xs dark:text-jacarta-300">
-                      JPG, PNG, DOC, DOCX, PDF. Max size: 5 MB
-                    </p>
-                  </>
-                )}
-              </div>
-              <div class="absolute inset-4 cursor-pointer rounded bg-jacarta-50 opacity-0 group-hover:opacity-100 dark:bg-jacarta-600"></div>
-              <input
-                type="file"
-                accept=".jpg,.jpeg,.png,.doc,.docx,.pdf"
-                id="proof-upload"
-                class="absolute inset-0 z-20 cursor-pointer opacity-0"
-                onChange={handleProofsUpload}
-                multiple="multiple"
               />
             </div>
           </div>
@@ -373,7 +296,7 @@ const CreateAsset = ({ web3Handler, account, marketplace, nft }) => {
           <button
             class="cursor-pointer rounded-full bg-accent py-3 px-8 text-center font-semibold text-white transition-all"
             onClick={() => {
-              uploadAssetData();
+              createNFT();
             }}
           >
             Create

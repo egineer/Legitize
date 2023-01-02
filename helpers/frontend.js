@@ -14,3 +14,7 @@ export const getETHPrice = (price) => {
   const rounded_balanceInEth = Math.round(balanceInEth * 10000) / 10000;
   return rounded_balanceInEth;
 };
+
+export const waitTimeout = (ms) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};

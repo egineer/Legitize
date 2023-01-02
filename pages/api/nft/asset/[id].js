@@ -1,10 +1,7 @@
 import { unstable_getServerSession } from "next-auth/next";
 import { authOptions } from "../../auth/[...nextauth]";
 import nextConnect from "next-connect";
-import multer from "multer";
 import prisma from "../../../../lib/prisma";
-import { v4 as uuidv4 } from "uuid";
-import { createArt } from "../../../../nft/scripts/generate_nft";
 
 const apiRoute = nextConnect({
   onError(error, req, res) {
@@ -17,9 +14,9 @@ const apiRoute = nextConnect({
   },
 });
 
-apiRoute.post(async (req, res) => {
+apiRoute.get(async (req, res) => {
+  const { id } = req.query;
   // Get User Session
-  const { itemId } = req.body;
   const session = await unstable_getServerSession(req, res, authOptions);
   if (session.user && session.user.email) {
     // Get User
@@ -29,26 +26,33 @@ apiRoute.post(async (req, res) => {
       },
     });
 
-    // Get Asset From Database
-    const asset = await prisma.asset.findUnique({
-      where: {
-        id: parseInt(itemId),
-      },
-    });
-
-    // Create Art
-    if (asset) {
-      try {
-        createArt(asset.imagePath, asset.artId, user.id);
-      } catch (error) {
-        throw error;
+    try {
+      if (id === "all") {
+        const result = await prisma.asset.findMany({
+          where: {
+            userId: user.id,
+          },
+        });
+        res.status(200).json({ status: "success", data: result });
+      } else {
+        const result = await prisma.asset.findUnique({
+          where: {
+            id: parseInt(id),
+            userId: user.id,
+          },
+        });
+        res.status(200).json({ status: "success", data: result });
       }
+    } catch (e) {
+      res.status(200).json({ status: "false" });
     }
-
-    res.status(200).json({ status: "success", artId: asset.artId });
-  } else {
-    res.status(401).json({ status: "failed" });
   }
 });
 
 export default apiRoute;
+
+export const config = {
+  api: {
+    bodyParser: true,
+  },
+};

@@ -16,14 +16,15 @@ apiRoute.post(async (req, res) => {
   const { artId } = req.body;
 
   try {
-    const result = await prisma.asset.findUnique({
+    const result = await prisma.asset.findFirst({
       where: {
         artId: artId,
+        status: "created",
       },
     });
     res.status(200).json({ status: "success", artData: result });
   } catch (e) {
-    res.status(200).json({ status: "false" });
+    res.status(200).json({ status: "false", error: "Error : " + e });
   }
 });
 

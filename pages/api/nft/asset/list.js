@@ -5,6 +5,7 @@ import multer from "multer";
 import prisma from "../../../../lib/prisma";
 import { v4 as uuidv4 } from "uuid";
 import { createArt } from "../../../../nft/scripts/generate_nft";
+import { now } from "next-auth/client/_utils";
 
 const apiRoute = nextConnect({
   onError(error, req, res) {
@@ -36,16 +37,19 @@ apiRoute.post(async (req, res) => {
       },
     });
 
-    // Create Art
     if (asset) {
-      try {
-        createArt(asset.imagePath, asset.artId, user.id);
-      } catch (error) {
-        throw error;
-      }
+      // Update Token Id
+      const result = await prisma.asset.update({
+        where: {
+          id: parseInt(itemId),
+        },
+        data: {
+          status: "listed",
+        },
+      });
     }
 
-    res.status(200).json({ status: "success", artId: asset.artId });
+    res.status(200).json({ status: "success" });
   } else {
     res.status(401).json({ status: "failed" });
   }

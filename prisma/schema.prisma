@@ -41,17 +41,23 @@ enum Role {
 }
 
 model Asset {
-  id              Int      @id @default(autoincrement())
-  artId           String?  @unique
-  assetId         String?  @unique
+  id              Int       @id @default(autoincrement())
+  artId           String?   @unique
+  tokenId         Json?     @unique
   name            String?
+  description     String?
+  price           String?
   image           String?
+  imagePath       String?
   thumbnailMedium String?
   thumbnailSmall  String?
-  user            User     @relation(fields: [userId], references: [id])
+  proofs          Json?
+  status          String    @default("pending") // possible statuses: pending - approved
+  user            User      @relation(fields: [userId], references: [id])
   userId          Int
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @default(now())
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @default(now())
+  listedAt        DateTime?
 }
 
 model Post {
