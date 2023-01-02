@@ -20,11 +20,13 @@ export async function createArt(nft_url, nft_id, userId) {
     const obj = JSON.parse(data_received);
     console.log("NFT Link:", obj[0], "\nCode Link:", obj[1], "\nCode:", obj[2]);
     // Create Asset in database
-    const result = await prisma.asset.create({
-      data: {
+    const result = await prisma.asset.update({
+      where: {
         artId: nft_id,
+      },
+      data: {
         image: obj[0],
-        userId,
+        status: "created",
       },
     });
     // extractData(data_received);

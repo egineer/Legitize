@@ -1,5 +1,18 @@
-const AssetsTable = ()=>{
+import Link from "next/link";
+import Date from "../date";
+const AssetsTable = ({assets,finalize,listItem})=>{
     const assetsList = ["","","","","",""];
+
+    const onFinalize = (e,item)=>{
+      e.preventDefault();
+      finalize(item);
+    }
+
+    const onList = (e,item)=>{
+      e.preventDefault();
+      listItem(item.price,item.tokenId,item.id);
+    }
+
     return(
         <div class="scrollbar-custom overflow-x-auto">
         <div
@@ -32,9 +45,54 @@ const AssetsTable = ()=>{
             </div>
           </div>
             {
-                assetsList.map((asset,index)=>{
+                assets.map((asset,index)=>{
+                  let itemButton = "";
+                  if(asset.status==="pending"){
+                    itemButton = (
+                      <Link
+                      href={`/assets/${asset.id}`}
+                      class="w-36 rounded-full bg-accent py-3 px-8 text-center font-semibold text-white shadow-red-volume transition-all"
+                    >
+                        View
+                    </Link>
+                    )
+                  }
+                  else if(asset.status==="approved"){
+                    itemButton = (
+                      <a
+                      href="#"
+                      class="w-36 rounded-full bg-accent py-3 px-8 text-center font-semibold text-white shadow-accent-volume transition-all hover:bg-accent-dark"
+                      onClick={(e)=>{onFinalize(e,asset)}}
+                    >
+                        Finalize
+                    </a>
+                    )
+                  }
+                  else if(asset.status==="created"){
+                    itemButton = (
+                      <a
+                      href="#"
+                      class="w-36 rounded-full bg-accent py-3 px-8 text-center font-semibold text-white shadow-accent-volume transition-all hover:bg-accent-dark"
+                      onClick={(e)=>{onList(e,asset)}}
+                    >
+                        List
+                    </a>
+                    )
+                  }
+                  else if(asset.status==="listed"){
+                    itemButton = (
+                      <a
+                      href="#"
+                      class="w-36 rounded-full bg-accent py-3 px-8 text-center font-semibold text-white shadow-accent-volume transition-all hover:bg-accent-dark"
+                    >
+                        Unlist
+                    </a>
+                    )
+                  }
+
+
                     return(
-                        <a href="user.html" class="flex transition-shadow hover:shadow-lg" role="row">
+                        <Link href={`/assets/${asset.id}`} class="flex transition-shadow hover:shadow-lg" role="row">
                         <div
                           class="flex w-[28%] items-center border-t border-jacarta-100 py-4 px-4 dark:border-jacarta-600"
                           role="cell"
@@ -59,7 +117,7 @@ const AssetsTable = ()=>{
                             </div>
                           </figure>
                           <span class="font-display text-sm font-semibold text-jacarta-700 dark:text-white">
-                            NFT Funny Cat
+                            {asset.name}
                           </span>
                         </div>
                         <div
@@ -118,30 +176,36 @@ const AssetsTable = ()=>{
                           class="flex w-[12%] items-center border-t border-jacarta-100 py-4 px-4 dark:border-jacarta-600"
                           role="cell"
                         >
-                            <span class="rounded bg-red py-1 px-2 text-xxs font-bold uppercase leading-none text-white"
-                                    >Pending</span
+                          {
+                            asset.status==="pending" ? 
+                            (
+                              <span class="rounded bg-yellow-500 py-1 px-2 text-xxs font-bold uppercase leading-none text-white"
+                              >Pending</span
+                      >
+                            )
+                            :
+                            (
+                              <span class="rounded bg-green py-1 px-2 text-xxs font-bold uppercase leading-none text-white"
+                                    >Approved</span
                             >
+                            )
+                          }
                         </div>
                         <div
                           class="flex w-[12%] items-center border-t border-jacarta-100 py-4 px-4 dark:border-jacarta-600"
                           role="cell"
                         >
-                            <span>11 Jan 2022</span>
+                            <span><Date dateString={asset.createdAt} /></span>
                         </div>
                         <div
                           class="flex w-[12%] items-center border-t border-jacarta-100 py-4 px-4 dark:border-jacarta-600"
                           role="cell"
                         >
                             <span>
-                            <a
-                              href="#"
-                              class="w-36 rounded-full bg-accent py-3 px-8 text-center font-semibold text-white shadow-accent-volume transition-all hover:bg-accent-dark"
-                            >
-                                View
-                            </a>
+                            {itemButton}
                             </span>
                         </div>
-                      </a>
+                      </Link>
                     )
                 })
             }

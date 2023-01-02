@@ -19,7 +19,7 @@ const apiRoute = nextConnect({
 
 apiRoute.post(async (req, res) => {
   // Get User Session
-  const { itemId } = req.body;
+  const { itemId, tokenId } = req.body;
   const session = await unstable_getServerSession(req, res, authOptions);
   if (session.user && session.user.email) {
     // Get User
@@ -36,16 +36,19 @@ apiRoute.post(async (req, res) => {
       },
     });
 
-    // Create Art
     if (asset) {
-      try {
-        createArt(asset.imagePath, asset.artId, user.id);
-      } catch (error) {
-        throw error;
-      }
+      // Update Token Id
+      const result = await prisma.asset.update({
+        where: {
+          id: parseInt(itemId),
+        },
+        data: {
+          tokenId,
+        },
+      });
     }
 
-    res.status(200).json({ status: "success", artId: asset.artId });
+    res.status(200).json({ status: "success" });
   } else {
     res.status(401).json({ status: "failed" });
   }
