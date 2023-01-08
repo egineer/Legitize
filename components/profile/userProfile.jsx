@@ -1,4 +1,15 @@
-const UserProfile = ()=>{
+import { Navbar, Nav, Button, Container } from 'react-bootstrap'
+import { ToastContainer, toast } from 'react-toastify';
+
+const UserProfile = (account)=>{
+
+  const clipboardCopyAccount = ()=>{
+
+    // Copy the text inside the text field
+    navigator.clipboard.writeText(account);
+    toast("Account ID copied to clipboard!");
+  }
+
 
     return(
         <section class="relative bg-light-base pb-12 pt-28 dark:bg-jacarta-800">
@@ -54,6 +65,43 @@ const UserProfile = ()=>{
                 class="js-copy-clipboard max-w-[10rem] select-none overflow-hidden text-ellipsis whitespace-nowrap dark:text-jacarta-200"
                 data-tippy-content="Copy"
               >
+                {/**Code to display the user's address */}
+                {account ? (
+                      <button 
+                        className="js-copy-clipboard my-4 flex select-none items-center whitespace-nowrap px-5 font-display leading-none text-jacarta-700 dark:text-white"
+                        data-tippy-content="Copy"
+                        id = "userAdress"
+                        onClick={clipboardCopyAccount}
+                      >
+                              <span className="max-w-[10rem] overflow-hidden text-ellipsis">
+                                <Nav.Link
+                                      href={`https://etherscan.io/address/${account}`}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="button nav-button btn-sm mx-4">
+                                      {account}
+
+                                  </Nav.Link>
+                                </span>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                height="24"
+                                className="ml-1 mb-px h-4 w-4 fill-jacarta-500 dark:fill-jacarta-300"
+                                >
+                                  <path fill="none" d="M0 0h24v24H0z" />
+                                  <path
+                                    d="M7 7V3a1 1 0 0 1 1-1h13a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-4v3.993c0 .556-.449 1.007-1.007 1.007H3.007A1.006 1.006 0 0 1 2 20.993l.003-12.986C2.003 7.451 2.452 7 3.01 7H7zm2 0h6.993C16.549 7 17 7.449 17 8.007V15h3V4H9v3zM4.003 9L4 20h11V9H4.003z"
+                                  />
+                              </svg>
+                              </button>
+                          ) : (
+                            <span className="max-w-[10rem] overflow-hidden text-ellipsis">
+                            <Button onClick={web3Handler} variant="outline-light" className="my-4 flex select-none items-center whitespace-nowrap px-5 font-display leading-none text-jacarta-700 dark:text-white">Connect Wallet</Button>
+                            </span> 
+                          )}
+            {/**Code to display the user's address ends */}
                 <span>0x7a86c0b064171007716bbd6af96676935799a63e</span>
               </button>
             </div>
