@@ -50,7 +50,7 @@ const AssetsTable = ({assets,finalize,listItem})=>{
                   if(asset.status==="pending"){
                     itemButton = (
                       <Link
-                      href={`/assets/${asset.id}`}
+                      href={`/assets/${asset.tokenId?.hex}`}
                       class="w-36 rounded-full bg-accent py-3 px-8 text-center font-semibold text-white shadow-red-volume transition-all"
                     >
                         View
@@ -92,14 +92,14 @@ const AssetsTable = ({assets,finalize,listItem})=>{
 
 
                     return(
-                        <Link href={`/assets/${asset.id}`} class="flex transition-shadow hover:shadow-lg" role="row">
+                        <Link href={`/assets/${asset.tokenId?.hex}`} class="flex transition-shadow hover:shadow-lg" role="row">
                         <div
                           class="flex w-[28%] items-center border-t border-jacarta-100 py-4 px-4 dark:border-jacarta-600"
                           role="cell"
                         >
                           <span class="mr-2 lg:mr-4">1</span>
-                          <figure class="relative mr-2 w-8 shrink-0 self-start lg:mr-5 lg:w-12">
-                            <img src="img/avatars/avatar_1.jpg" alt="avatar 1" class="rounded-2lg" loading="lazy" />
+                          <figure class="relative mr-2 w-8 h-8 shrink-0 self-start lg:mr-5 lg:w-12">
+                            <img src={asset.image} alt="avatar 1" class="rounded-2lg w-[100%] h-[100%] object-cover object-center" loading="lazy" />
                             <div
                               class="absolute -right-2 -bottom-1 flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-green dark:border-jacarta-600"
                               data-tippy-content="Verified Collection"

@@ -30,7 +30,9 @@ export default function Layout({ children, web3Handler, account, marketplace , n
         <title>Legitize</title>
       </Head>
       <Header web3Handler={web3Handler} account={account}/>
+      <div id="app">
       {children}
+      </div>
       <Footer/>
     </div>
   );

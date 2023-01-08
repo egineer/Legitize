@@ -1,28 +1,23 @@
 import { useEffect } from "react";
 import { useSession, getSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const Logout = () => {
   const { data: session, status } = useSession();
+  const router = useRouter();
 
   const handleLogout = async () => {
     try {
-      // const res = await signOut("credentials", {
-      //     email: email,
-      //     password: password,
-      //     redirect: false,
-      //   });
-      //   if(res.ok===true){
-      //     await Router.push("/panel");
-      //   }
-      //   if(res.error){
-      //     setError(res.error);
-      //   }
-
-      const ress = await signOut({ callbackUrl: "/" });
+      const ress = await signOut({ redirect: false, callbackUrl: "/" });
       console.log(ress);
+      // Remove User Data from Local Storage
+      localStorage.removeItem("loggedInUser");
+      if (typeof window !== "undefined") {
+        router.push("/");
+      }
     } catch (error) {
-      setError("There was an error while logging in.");
+      console.log("There was an error while logging in.", error);
     }
   };
   useEffect(() => {

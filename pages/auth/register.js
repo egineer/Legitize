@@ -64,13 +64,13 @@ const Register = () => {
               alt="login"
               className="absolute h-full w-full object-cover"
             />
-            <a href="index.html" className="relative inline-block py-36">
+            <Link href="/" className="relative inline-block py-36">
               <img
                 src="/img/logo_white.png"
                 className="inline-block max-h-7"
                 alt="Xhibiter | NFT Marketplace"
               />
-            </a>
+            </Link>
           </div>
 
           <div className="relative flex items-center justify-center p-[10%] lg:w-1/2">
@@ -165,7 +165,7 @@ const Register = () => {
                           onChange={(e) => setEmail(e.target.value)}
                         />
                       </div>
-                      <div className="mb-6 ml-6">
+                      <div className="mb-6">
                         <label
                           for="item-name"
                           className="mb-2 block font-display text-jacarta-700 dark:text-white text-left"

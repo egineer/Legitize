@@ -86,7 +86,7 @@ export default function Home({ web3Handler, account, marketplace, nft }) {
       <main>
         <HeroBanner />
         <CollectionsSection />
-        <FeaturedItemsSection items={items} />
+        {items.length ? <FeaturedItemsSection items={items} /> : ""}
         <PopularSellers />
       </main>
     </Layout>
