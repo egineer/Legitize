@@ -5,7 +5,7 @@ import Image from "next/image";
 import Layout from "../components/layout.jsx";
 import HeroBanner from "../components/banner/hero.jsx";
 import styles from "../styles/Home.module.css";
-import CategoriesSection from "../components/sections/categories.jsx";
+import FeaturedItemsSection from "../components/sections/featuredItems.js";
 import CollectionsSection from "../components/sections/collections.jsx";
 import PopularSellers from "../components/sections/popularSellers.jsx";
 import { isValidUrl } from "../helpers/frontend";
@@ -38,6 +38,7 @@ export default function Home({ web3Handler, account, marketplace, nft }) {
             tempItems.push({
               totalPrice,
               itemId: item.itemId,
+              tokenId: item.tokenId,
               seller: item.seller,
               name: metadata.name,
               description: metadata.description,
@@ -49,6 +50,8 @@ export default function Home({ web3Handler, account, marketplace, nft }) {
     }
     setLoading(false);
     console.log("items", tempItems);
+    // Update Items Saved In Local Storage
+    localStorage.setItem("assets", JSON.stringify(tempItems));
     setItems(tempItems);
   };
 
@@ -65,6 +68,14 @@ export default function Home({ web3Handler, account, marketplace, nft }) {
     }
   }, [marketplace]);
 
+  useEffect(() => {
+    // Load Assets From Local Storage
+    const assets = localStorage.getItem("assets");
+    if (assets) {
+      setItems(JSON.parse(assets));
+    }
+  }, []);
+
   return (
     <Layout
       web3Handler={web3Handler}
@@ -75,7 +86,7 @@ export default function Home({ web3Handler, account, marketplace, nft }) {
       <main>
         <HeroBanner />
         <CollectionsSection />
-        <CategoriesSection items={items} />
+        <FeaturedItemsSection items={items} />
         <PopularSellers />
       </main>
     </Layout>

@@ -22,6 +22,7 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
   assets    Asset[]
+  bids      Bid[]
 }
 
 model Profile {
@@ -58,6 +59,19 @@ model Asset {
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @default(now())
   listedAt        DateTime?
+  bids            Bid[]
+}
+
+model Bid {
+  id        Int      @id @default(autoincrement())
+  price     String
+  status    String?  @default("active")
+  asset     Asset    @relation(fields: [assetId], references: [id])
+  assetId   Int
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
 }
 
 model Post {

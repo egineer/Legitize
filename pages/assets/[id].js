@@ -1,7 +1,43 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
 import Layout from "../../components/layout.jsx";
-import RelatedAssets from "../../components/sections/relatedAssets";
+import { getETHPrice } from "../../helpers/frontend";
+import { useRouter } from "next/router";
 
 export default function SingleAsset() {
+  const router = useRouter();
+  const { id } = router.query;
+
+  const [asset, setAsset] = useState({});
+  const [assets, setAssets] = useState([]);
+  const [bidPrice, setBidPrice] = useState(0.0005);
+
+  const getAsset = async (id) => {
+    const response = await axios.get(`/api/nft/asset/${id}`);
+    console.log(response);
+    if (response.data && response.data.data) {
+      setAsset(response.data.data);
+    }
+  };
+
+  const placeBid = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("assetId", asset.id);
+    formData.append("price", bidPrice);
+
+    const config = {
+      headers: { "content-type": "application/json" },
+    };
+
+    const response = await axios.post("/api/nft/bid/create", formData, config);
+    console.log(response);
+  };
+
+  useEffect(() => {
+    getAsset(id);
+  }, [id]);
+
   return (
     <Layout>
       <main class="mt-24">
@@ -17,7 +53,7 @@ export default function SingleAsset() {
             <div class="md:flex md:flex-wrap">
               <figure class="mb-8 md:w-2/5 md:flex-shrink-0 md:flex-grow-0 md:basis-auto lg:w-1/2">
                 <img
-                  src="/img/products/item_single_large.jpg"
+                  src={asset?.image}
                   alt="item"
                   class="cursor-pointer rounded-2.5xl"
                   data-bs-toggle="modal"
@@ -144,7 +180,7 @@ export default function SingleAsset() {
                 </div>
 
                 <h1 class="mb-4 font-display text-4xl font-semibold text-jacarta-700 dark:text-white">
-                  TSARÉVNA
+                  {asset?.name}
                 </h1>
 
                 <div class="mb-8 flex items-center space-x-4 whitespace-nowrap">
@@ -182,7 +218,7 @@ export default function SingleAsset() {
                       </svg>
                     </span>
                     <span class="text-sm font-medium tracking-tight text-green">
-                      4.7 ETH
+                      {asset?.price} ETH
                     </span>
                   </div>
                   <span class="text-sm text-jacarta-400 dark:text-jacarta-300">
@@ -193,12 +229,7 @@ export default function SingleAsset() {
                   </span>
                 </div>
 
-                <p class="mb-10 dark:text-jacarta-300">
-                  Neque aut veniam consectetur magnam libero, natus eius numquam
-                  reprehenderit hic at, excepturi repudiandae magni optio odio
-                  doloribus? Facilisi lobortisal morbi fringilla urna amet sed
-                  ipsum.
-                </p>
+                <p class="mb-10 dark:text-jacarta-300">{asset?.description}</p>
 
                 <div class="mb-8 flex flex-wrap">
                   <div class="mr-8 mb-4 flex">
@@ -386,6 +417,7 @@ export default function SingleAsset() {
                     data-bs-toggle="modal"
                     data-bs-target="#placeBidModal"
                     class="inline-block w-full rounded-full bg-accent py-3 px-8 text-center font-semibold text-white shadow-accent-volume transition-all hover:bg-accent-dark"
+                    onClick={(e) => placeBid(e)}
                   >
                     Place Bid
                   </a>
@@ -394,7 +426,6 @@ export default function SingleAsset() {
             </div>
           </div>
         </section>
-        <RelatedAssets />
       </main>
     </Layout>
   );

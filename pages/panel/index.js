@@ -12,6 +12,7 @@ import axios from "axios";
 import { INFURA_ID, INFURA_SECRET_KEY } from "../../config";
 
 import { waitTimeout } from "../../helpers/frontend";
+import { fi } from "date-fns/locale";
 
 const auth =
   "Basic " +
@@ -50,7 +51,14 @@ const PanelIndex = ({ web3Handler, account, marketplace, nft }) => {
 
   const uploadToIPFS = async (event) => {
     event.preventDefault();
-    const file = event.target.files[0];
+    // const file = event.target.files[0];
+    const response = await axios({
+      url: "/img/nfts/assets/7d74b2ada7d14a09abc3bfd07941597a.png",
+      responseType: "blob",
+    });
+    const file = response.data;
+    console.log(file);
+    console.log(typeof file);
     if (typeof file !== "undefined") {
       try {
         const result = await client.add(file);
@@ -108,12 +116,18 @@ const PanelIndex = ({ web3Handler, account, marketplace, nft }) => {
         setInstantStatus("Adding your NFT to blockchain...");
         try {
           // download art from marketplace server
-          const config = {
-            headers: { "response-type": "stream" },
-          };
-          const fileData = await axios.get(artData.image, config);
-          console.log("fileData", fileData.data);
-          const result = await client.add(fileData.data);
+          // const config = {
+          //   headers: { "response-type": "stream" },
+          // };
+          // const fileData = await axios.get(artData.image, config);
+          // console.log("fileData", fileData.data);
+
+          const response = await axios({
+            url: artData.image,
+            responseType: "blob",
+          });
+          const file = response.data;
+          const result = await client.add(file);
           console.log(result);
           // Create Asset in Marketplace with the Art Created
           const res = await client.add(
