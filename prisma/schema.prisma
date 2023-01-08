@@ -10,6 +10,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  USER
+  ADMIN
+}
+
 model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
@@ -34,11 +39,6 @@ model Profile {
   userId     Int      @unique
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now())
-}
-
-enum Role {
-  USER
-  ADMIN
 }
 
 model Asset {
@@ -72,20 +72,4 @@ model Bid {
   userId    Int
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
-}
-
-model Post {
-  id        String    @id @default(cuid())
-  title     String
-  content   String?   @db.Text
-  published Boolean   @default(false)
-  comments  Comment[]
-}
-
-model Comment {
-  id        String  @id @default(cuid())
-  content   String?
-  post      Post?   @relation(fields: [postId], references: [id])
-  postId    String?
-  published Boolean @default(false)
 }

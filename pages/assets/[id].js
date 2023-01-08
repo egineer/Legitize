@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Layout from "../../components/layout.jsx";
-import { getETHPrice } from "../../helpers/frontend";
 import { useRouter } from "next/router";
 
-import DefautModal from "../../components/modals/defaultModal.js";
 import BidModal from "../../components/modals/bidModal.js";
 import { waitTimeout } from "../../helpers/frontend";
 import { useSession } from "next-auth/react";
@@ -15,7 +13,6 @@ export default function SingleAsset() {
   const { id } = router.query;
   const { status, data } = useSession();
   const [asset, setAsset] = useState({});
-  const [assets, setAssets] = useState([]);
   const [bidPrice, setBidPrice] = useState(0);
   const [showBidModal, setShowBidModal] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -120,7 +117,7 @@ export default function SingleAsset() {
       );
     }
   } else {
-    placeBidButton(
+    placeBidButton = (
       <Link
         href="/auth/login"
         class="inline-block w-full rounded-full bg-accent py-3 px-8 text-center font-semibold text-white shadow-accent-volume transition-all hover:bg-accent-dark"
