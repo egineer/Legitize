@@ -79,7 +79,6 @@ contract Legitize is ReentrancyGuard{
         item.nft.transferFrom(address(this), msg.sender, item.tokenId);
 
         emit Bought(_itemId, address(item.nft), item.tokenId, item.price, item.seller, msg.sender);
-
     }
 
     function getTotalPrice(uint _itemId) view public returns(uint){
@@ -87,8 +86,39 @@ contract Legitize is ReentrancyGuard{
     }
 
     function chagePrice(uint _itemId, uint _price) external nonReentrant{
-        require(msg.sender == Items[_itemId].seller, "Only the seller can change the Price");
+        Item storage item = Items[_itemId];
 
-        Items[_itemId].price = _price;
+        require(msg.sender == item.seller, "Only the seller can change the Price");
+        require(_price > 0, "Price must be greater than Zero");
+
+        item.price = _price;
+    }
+
+
+    function buyToClose(uint _itemId) public payable nonReentrant{
+
+        uint zeroPrice = 0;
+        Item storage item1 = Items[_itemId];
+
+        
+        require(_itemId>0 && _itemId <= itemCount, "Item doesn't exist");
+        require(msg.sender == item1.seller, "Only the seller can unlist the item");
+        require(msg.value >= zeroPrice, "Not enough ether to cover item price and market fee");
+        require(!item1.sold, "Item unlisted");
+
+        //Change the price to zero
+        item1.price = zeroPrice;
+
+        //Pay the seller
+        item1.seller.transfer(item1.price);
+        feeAccount.transfer(item1.price); //Pay the marketplace's owner.
+
+        //Change the state of the NFT as sold
+        item1.sold = true;
+
+        //transfer NFT to buyer
+        item1.nft.transferFrom(address(this), msg.sender, item1.tokenId);
+
+        emit Bought(_itemId, address(item1.nft), item1.tokenId, item1.price, item1.seller, msg.sender);
     }
 }
