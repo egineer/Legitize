@@ -13,6 +13,14 @@ const AssetsTable = ({assets,finalize,listItem})=>{
       listItem(item.price,item.tokenId,item.id);
     }
 
+    const topBid = (bids)=>{
+      if(bids && bids.length){
+        // return bids[0].price;
+        return Math.max.apply(Math, bids.map(function(o) { return o.price; }))
+      }
+      return "No bid";
+    }
+
     return(
         <div class="scrollbar-custom overflow-x-auto">
         <div
@@ -141,7 +149,7 @@ const AssetsTable = ({assets,finalize,listItem})=>{
                               <path fill="#62688F" d="M959.8 1397.6v441.7l540.1-760.6z"></path>
                             </svg>
                           </span>
-                          <span class="text-sm font-medium tracking-tight">30,643.01</span>
+                          <span class="text-sm font-medium tracking-tight">{topBid(asset.bids)}</span>
                         </div>
                         <div
                           class="flex w-[12%] items-center border-t border-jacarta-100 py-4 px-4 dark:border-jacarta-600"
@@ -164,13 +172,13 @@ const AssetsTable = ({assets,finalize,listItem})=>{
                               <path fill="#62688F" d="M959.8 1397.6v441.7l540.1-760.6z"></path>
                             </svg>
                           </span>
-                          <span class="text-sm font-medium tracking-tight">15.49</span>
+                          <span class="text-sm font-medium tracking-tight">{asset.price}</span>
                         </div>
                         <div
                           class="flex w-[12%] items-center border-t border-jacarta-100 py-4 px-4 dark:border-jacarta-600"
                           role="cell"
                         >
-                          <span>3.5K</span>
+                          <span>{asset.bids?.length}</span>
                         </div>
                         <div
                           class="flex w-[12%] items-center border-t border-jacarta-100 py-4 px-4 dark:border-jacarta-600"
@@ -186,7 +194,7 @@ const AssetsTable = ({assets,finalize,listItem})=>{
                             :
                             (
                               <span class="rounded bg-green py-1 px-2 text-xxs font-bold uppercase leading-none text-white"
-                                    >Approved</span
+                                    >{asset.status}</span
                             >
                             )
                           }

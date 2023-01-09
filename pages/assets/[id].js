@@ -8,7 +8,12 @@ import { waitTimeout } from "../../helpers/frontend";
 import { useSession } from "next-auth/react";
 import Link from "next/link.js";
 
-export default function SingleAsset() {
+export default function SingleAsset({
+  web3Handler,
+  account,
+  marketplace,
+  nft,
+}) {
   const router = useRouter();
   const { id } = router.query;
   const { status, data } = useSession();
@@ -17,6 +22,7 @@ export default function SingleAsset() {
   const [showBidModal, setShowBidModal] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [userHasBid, setUserHasBid] = useState("undefined");
+  const [userCanBid, setUserCanBid] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState({});
 
   const getAsset = async (id) => {
@@ -81,7 +87,13 @@ export default function SingleAsset() {
         } else {
           setUserHasBid(false);
         }
+      } else {
+        setUserHasBid(false);
       }
+    }
+
+    if (asset.userId !== loggedInUser.id) {
+      setUserCanBid(true);
     }
   }, [asset]);
 
@@ -105,7 +117,7 @@ export default function SingleAsset() {
           You already placed a bid
         </a>
       );
-    } else if (userHasBid === false) {
+    } else if (userHasBid === false && userCanBid === true) {
       placeBidButton = (
         <a
           href="#"
@@ -128,7 +140,7 @@ export default function SingleAsset() {
   }
 
   return (
-    <Layout>
+    <Layout web3Handler={web3Handler} account={account}>
       <main class="mt-24">
         <section class="relative pt-12 pb-24 lg:py-24">
           <picture class="pointer-events-none absolute inset-0 -z-10 dark:hidden">

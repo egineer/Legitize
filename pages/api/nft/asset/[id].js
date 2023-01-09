@@ -32,6 +32,9 @@ apiRoute.get(async (req, res) => {
           where: {
             userId: user.id,
           },
+          include: {
+            bids: true,
+          },
         });
         res.status(200).json({ status: "success", data: result });
       } else {
