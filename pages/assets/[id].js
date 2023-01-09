@@ -18,17 +18,32 @@ export default function SingleAsset({
   const { id } = router.query;
   const { status, data } = useSession();
   const [asset, setAsset] = useState({});
+  const [assetCreator, setAssetCreator] = useState({});
   const [bidPrice, setBidPrice] = useState(0);
+  const [bids, setBids] = useState([]);
   const [showBidModal, setShowBidModal] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [userHasBid, setUserHasBid] = useState("undefined");
   const [userCanBid, setUserCanBid] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState({});
 
-  const getAsset = async (id) => {
-    const response = await axios.get(`/api/nft/asset/${id}`);
+  const loadAssetData = async (tokenId) => {
+    // Load all unsold items
+    if (nft && typeof nft.tokenURI === "function") {
+      const itemUrl = await nft.tokenURI(tokenId);
+      if (itemUrl) {
+        const response = await axios.get(itemUrl);
+        setAsset(response.data);
+      }
+    }
+  };
+
+  const getBids = async (id) => {
+    const response = await axios.get(`/api/nft/bid/${id}`);
+    console.log(response);
     if (response.data && response.data.data) {
-      setAsset(response.data.data);
+      setBids(response.data.data.bids);
+      setAssetCreator(response.data.data.assetCreator);
     }
   };
 
@@ -54,13 +69,20 @@ export default function SingleAsset({
       if (response.data && response.data.status === "success") {
         setIsProcessing(false);
         setShowBidModal(false);
-        getAsset(id);
+        getBids(id);
       } else {
         setIsProcessing(false);
         setShowBidModal(false);
       }
     }
   };
+
+  useEffect(() => {
+    if (nft) {
+      loadAssetData(id);
+      console.log("YES NFT");
+    }
+  }, [nft]);
 
   useEffect(() => {
     const loggedInUserData = localStorage.getItem("loggedInUser");
@@ -70,7 +92,7 @@ export default function SingleAsset({
   }, []);
 
   useEffect(() => {
-    getAsset(id);
+    getBids(id);
   }, [id]);
 
   useEffect(() => {
@@ -78,8 +100,8 @@ export default function SingleAsset({
       setBidPrice(Number(asset.price));
       // console.log(data);
       // Check if user has placed a bid
-      if (asset.bids && asset.bids.length) {
-        const bidIndex = asset.bids.findIndex((bid) => {
+      if (bids && bids.length) {
+        const bidIndex = bids.findIndex((bid) => {
           return bid.userId === loggedInUser.id;
         });
         if (bidIndex >= 0) {
@@ -91,11 +113,15 @@ export default function SingleAsset({
         setUserHasBid(false);
       }
     }
+  }, [asset]);
 
-    if (asset.userId !== loggedInUser.id) {
+  useEffect(() => {
+    if (assetCreator && assetCreator === loggedInUser.id) {
+      setUserCanBid(false);
+    } else {
       setUserCanBid(true);
     }
-  }, [asset]);
+  }, [assetCreator]);
 
   const onCloseModal = (e) => {
     setShowBidModal(false);
@@ -105,6 +131,9 @@ export default function SingleAsset({
     e.preventDefault();
     setShowBidModal(true);
   };
+
+  console.log(bids);
+  console.log(assetCreator);
 
   let placeBidButton = "";
   if (status === "authenticated") {
@@ -156,7 +185,7 @@ export default function SingleAsset({
                 <img
                   src={asset?.image}
                   alt="item"
-                  class="cursor-pointer rounded-2.5xl w-[100%] h-[100%] object-cover object-bottom"
+                  class="cursor-pointer rounded-2.5xl w-[100%]"
                   data-bs-toggle="modal"
                   data-bs-target="#imageModal"
                 />
