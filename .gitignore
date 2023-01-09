@@ -19,7 +19,13 @@
 /build
 
 #nfts
-/public/img/nfts
+/public/img/nfts/originals/*
+/public/img/nfts/assets/*
+/public/img/nfts/renamed/*
+/public/img/nfts/resized/*
+/public/img/nfts/resized_70/*
+/public/img/nfts/codes/*
+/public/img/nfts/proofs/*
 
 # misc
 .DS_Store

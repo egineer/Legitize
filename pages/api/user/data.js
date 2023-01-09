@@ -1,7 +1,7 @@
 import { unstable_getServerSession } from "next-auth/next";
-import { authOptions } from "../../auth/[...nextauth]";
+import { authOptions } from "../auth/[...nextauth]";
 import nextConnect from "next-connect";
-import prisma from "../../../../lib/prisma";
+import prisma from "../../../lib/prisma";
 
 const apiRoute = nextConnect({
   onError(error, req, res) {
@@ -14,8 +14,15 @@ const apiRoute = nextConnect({
   },
 });
 
+// Exclude keys from user
+const exclude = (user, keys) => {
+  for (let key of keys) {
+    delete user[key];
+  }
+  return user;
+};
+
 apiRoute.get(async (req, res) => {
-  const { id } = req.query;
   // Get User Session
   const session = await unstable_getServerSession(req, res, authOptions);
   if (session.user && session.user.email) {
@@ -24,37 +31,19 @@ apiRoute.get(async (req, res) => {
       where: {
         email: session.user.email,
       },
+      include: {
+        profile: true,
+      },
     });
 
-    try {
-      if (id === "all") {
-        const result = await prisma.asset.findMany({
-          where: {
-            userId: user.id,
-          },
-          include: {
-            bids: true,
-          },
-        });
-        res.status(200).json({ status: "success", data: result });
-      } else {
-        const result = await prisma.asset.findFirst({
-          where: {
-            tokenId: {
-              path: ["hex"],
-              equals: id,
-            },
-          },
-          include: {
-            bids: true,
-          },
-        });
-        res.status(200).json({ status: "success", data: result });
-      }
-    } catch (e) {
+    if (user) {
+      const userWithoutPassword = exclude(user, ["password"]);
+      res.status(200).json({ status: "success", user: userWithoutPassword });
+    } else {
       res.status(200).json({ status: "false" });
     }
   }
+  res.status(200).json({ status: "false" });
 });
 
 export default apiRoute;

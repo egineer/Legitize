@@ -13,6 +13,14 @@ const AssetsTable = ({assets,finalize,listItem})=>{
       listItem(item.price,item.tokenId,item.id);
     }
 
+    const topBid = (bids)=>{
+      if(bids && bids.length){
+        // return bids[0].price;
+        return Math.max.apply(Math, bids.map(function(o) { return o.price; }))
+      }
+      return "No bid";
+    }
+
     return(
         <div class="scrollbar-custom overflow-x-auto">
         <div
@@ -50,7 +58,7 @@ const AssetsTable = ({assets,finalize,listItem})=>{
                   if(asset.status==="pending"){
                     itemButton = (
                       <Link
-                      href={`/assets/${asset.id}`}
+                      href={`/assets/${asset.tokenId?.hex}`}
                       class="w-36 rounded-full bg-accent py-3 px-8 text-center font-semibold text-white shadow-red-volume transition-all"
                     >
                         View
@@ -92,14 +100,14 @@ const AssetsTable = ({assets,finalize,listItem})=>{
 
 
                     return(
-                        <Link href={`/assets/${asset.id}`} class="flex transition-shadow hover:shadow-lg" role="row">
+                        <Link href={`/assets/${asset.tokenId?.hex}`} class="flex transition-shadow hover:shadow-lg" role="row">
                         <div
                           class="flex w-[28%] items-center border-t border-jacarta-100 py-4 px-4 dark:border-jacarta-600"
                           role="cell"
                         >
                           <span class="mr-2 lg:mr-4">1</span>
-                          <figure class="relative mr-2 w-8 shrink-0 self-start lg:mr-5 lg:w-12">
-                            <img src="img/avatars/avatar_1.jpg" alt="avatar 1" class="rounded-2lg" loading="lazy" />
+                          <figure class="relative mr-2 w-8 h-8 shrink-0 self-start lg:mr-5 lg:w-12">
+                            <img src={asset.image} alt="avatar 1" class="rounded-2lg w-[100%] h-[100%] object-cover object-center" loading="lazy" />
                             <div
                               class="absolute -right-2 -bottom-1 flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-green dark:border-jacarta-600"
                               data-tippy-content="Verified Collection"
@@ -141,7 +149,7 @@ const AssetsTable = ({assets,finalize,listItem})=>{
                               <path fill="#62688F" d="M959.8 1397.6v441.7l540.1-760.6z"></path>
                             </svg>
                           </span>
-                          <span class="text-sm font-medium tracking-tight">30,643.01</span>
+                          <span class="text-sm font-medium tracking-tight">{topBid(asset.bids)}</span>
                         </div>
                         <div
                           class="flex w-[12%] items-center border-t border-jacarta-100 py-4 px-4 dark:border-jacarta-600"
@@ -164,13 +172,13 @@ const AssetsTable = ({assets,finalize,listItem})=>{
                               <path fill="#62688F" d="M959.8 1397.6v441.7l540.1-760.6z"></path>
                             </svg>
                           </span>
-                          <span class="text-sm font-medium tracking-tight">15.49</span>
+                          <span class="text-sm font-medium tracking-tight">{asset.price}</span>
                         </div>
                         <div
                           class="flex w-[12%] items-center border-t border-jacarta-100 py-4 px-4 dark:border-jacarta-600"
                           role="cell"
                         >
-                          <span>3.5K</span>
+                          <span>{asset.bids?.length}</span>
                         </div>
                         <div
                           class="flex w-[12%] items-center border-t border-jacarta-100 py-4 px-4 dark:border-jacarta-600"
@@ -186,7 +194,7 @@ const AssetsTable = ({assets,finalize,listItem})=>{
                             :
                             (
                               <span class="rounded bg-green py-1 px-2 text-xxs font-bold uppercase leading-none text-white"
-                                    >Approved</span
+                                    >{asset.status}</span
                             >
                             )
                           }

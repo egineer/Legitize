@@ -3,6 +3,7 @@ import Link from "next/link";
 import { signIn } from "next-auth/react";
 import Router from "next/router";
 import { useSession, getSession } from "next-auth/react";
+import axios from "axios";
 
 const Login = () => {
   const { data: session, status } = useSession();
@@ -11,10 +12,22 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
+  const [userJustLoggedIn, setUserJustLoggedIn] = useState(false);
+
+  const getUserData = async () => {
+    // Get User Info
+    const response = await axios.get(`/api/user/data`);
+    if (response.data && response.data.user) {
+      localStorage.setItem("loggedInUser", JSON.stringify(response.data.user));
+      setUserJustLoggedIn(false);
+    }
+  };
 
   useEffect(() => {
-    if (status === "authenticated") Router.replace("/panel");
-  }, [status]);
+    if (userJustLoggedIn) {
+      getUserData();
+    } else if (status === "authenticated") Router.replace("/panel");
+  }, [status, userJustLoggedIn]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,8 +41,11 @@ const Login = () => {
           password: password,
           redirect: false,
         });
+        console.log(res);
         if (res.ok === true) {
-          await Router.push("/panel");
+          // Save User Data to Local Storage
+          setUserJustLoggedIn(true);
+          // await Router.push("/panel");
         }
         if (res.error) {
           setError(res.error);
@@ -57,13 +73,13 @@ const Login = () => {
               alt="login"
               className="absolute h-full w-full object-cover"
             />
-            <a href="index.html" className="relative inline-block py-36">
+            <Link href="/" className="relative inline-block py-36">
               <img
                 src="/img/logo_white.png"
                 className="inline-block max-h-7"
                 alt="Xhibiter | NFT Marketplace"
               />
-            </a>
+            </Link>
           </div>
 
           <div className="relative flex items-center justify-center p-[10%] lg:w-1/2">
@@ -126,7 +142,7 @@ const Login = () => {
                         onChange={(e) => setEmail(e.target.value)}
                       />
                     </div>
-                    <div className="mb-6 ml-6">
+                    <div className="mb-6">
                       <label
                         for="item-name"
                         className="mb-2 block font-display text-jacarta-700 dark:text-white text-left"

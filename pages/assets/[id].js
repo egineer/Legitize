@@ -1,45 +1,175 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Layout from "../../components/layout.jsx";
-import { getETHPrice } from "../../helpers/frontend";
 import { useRouter } from "next/router";
 
-export default function SingleAsset() {
+import BidModal from "../../components/modals/bidModal.js";
+import { waitTimeout } from "../../helpers/frontend";
+import { useSession } from "next-auth/react";
+import Link from "next/link.js";
+
+export default function SingleAsset({
+  web3Handler,
+  account,
+  marketplace,
+  nft,
+}) {
   const router = useRouter();
   const { id } = router.query;
-
+  const { status, data } = useSession();
   const [asset, setAsset] = useState({});
-  const [assets, setAssets] = useState([]);
-  const [bidPrice, setBidPrice] = useState(0.0005);
+  const [assetCreator, setAssetCreator] = useState({});
+  const [bidPrice, setBidPrice] = useState(0);
+  const [bids, setBids] = useState([]);
+  const [showBidModal, setShowBidModal] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [userHasBid, setUserHasBid] = useState("undefined");
+  const [userCanBid, setUserCanBid] = useState(false);
+  const [loggedInUser, setLoggedInUser] = useState({});
 
-  const getAsset = async (id) => {
-    const response = await axios.get(`/api/nft/asset/${id}`);
-    console.log(response);
-    if (response.data && response.data.data) {
-      setAsset(response.data.data);
+  const loadAssetData = async (tokenId) => {
+    // Load all unsold items
+    if (nft && typeof nft.tokenURI === "function") {
+      const itemUrl = await nft.tokenURI(tokenId);
+      if (itemUrl) {
+        const response = await axios.get(itemUrl);
+        setAsset(response.data);
+      }
     }
   };
 
-  const placeBid = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("assetId", asset.id);
-    formData.append("price", bidPrice);
-
-    const config = {
-      headers: { "content-type": "application/json" },
-    };
-
-    const response = await axios.post("/api/nft/bid/create", formData, config);
+  const getBids = async (id) => {
+    const response = await axios.get(`/api/nft/bid/${id}`);
     console.log(response);
+    if (response.data && response.data.data) {
+      setBids(response.data.data.bids);
+      setAssetCreator(response.data.data.assetCreator);
+    }
+  };
+
+  const saveBid = async () => {
+    if (asset.id && bidPrice) {
+      setIsProcessing(true);
+      // Add Some Delay
+      await waitTimeout(2000);
+      const formData = new FormData();
+      formData.append("assetId", asset.id);
+      formData.append("price", bidPrice);
+
+      const config = {
+        headers: { "content-type": "application/json" },
+      };
+
+      const response = await axios.post(
+        "/api/nft/bid/create",
+        formData,
+        config
+      );
+      console.log(response);
+      if (response.data && response.data.status === "success") {
+        setIsProcessing(false);
+        setShowBidModal(false);
+        getBids(id);
+      } else {
+        setIsProcessing(false);
+        setShowBidModal(false);
+      }
+    }
   };
 
   useEffect(() => {
-    getAsset(id);
+    if (nft) {
+      loadAssetData(id);
+      console.log("YES NFT");
+    }
+  }, [nft]);
+
+  useEffect(() => {
+    const loggedInUserData = localStorage.getItem("loggedInUser");
+    if (loggedInUserData) {
+      setLoggedInUser(JSON.parse(loggedInUserData));
+    }
+  }, []);
+
+  useEffect(() => {
+    getBids(id);
   }, [id]);
 
+  useEffect(() => {
+    if (asset && asset.price) {
+      setBidPrice(Number(asset.price));
+      // console.log(data);
+      // Check if user has placed a bid
+      if (bids && bids.length) {
+        const bidIndex = bids.findIndex((bid) => {
+          return bid.userId === loggedInUser.id;
+        });
+        if (bidIndex >= 0) {
+          setUserHasBid(true);
+        } else {
+          setUserHasBid(false);
+        }
+      } else {
+        setUserHasBid(false);
+      }
+    }
+  }, [asset]);
+
+  useEffect(() => {
+    if (assetCreator && assetCreator === loggedInUser.id) {
+      setUserCanBid(false);
+    } else {
+      setUserCanBid(true);
+    }
+  }, [assetCreator]);
+
+  const onCloseModal = (e) => {
+    setShowBidModal(false);
+  };
+
+  const onPlaceBid = (e) => {
+    e.preventDefault();
+    setShowBidModal(true);
+  };
+
+  console.log(bids);
+  console.log(assetCreator);
+
+  let placeBidButton = "";
+  if (status === "authenticated") {
+    if (userHasBid === true) {
+      placeBidButton = (
+        <a
+          href="#"
+          class="inline-block w-full rounded-full bg-slate-300 py-3 px-8 text-center font-semibold text-black transition-all"
+        >
+          You already placed a bid
+        </a>
+      );
+    } else if (userHasBid === false && userCanBid === true) {
+      placeBidButton = (
+        <a
+          href="#"
+          class="inline-block w-full rounded-full bg-accent py-3 px-8 text-center font-semibold text-white shadow-accent-volume transition-all hover:bg-accent-dark"
+          onClick={(e) => onPlaceBid(e)}
+        >
+          Place Bid
+        </a>
+      );
+    }
+  } else {
+    placeBidButton = (
+      <Link
+        href="/auth/login"
+        class="inline-block w-full rounded-full bg-accent py-3 px-8 text-center font-semibold text-white shadow-accent-volume transition-all hover:bg-accent-dark"
+      >
+        Sign in to place bid
+      </Link>
+    );
+  }
+
   return (
-    <Layout>
+    <Layout web3Handler={web3Handler} account={account}>
       <main class="mt-24">
         <section class="relative pt-12 pb-24 lg:py-24">
           <picture class="pointer-events-none absolute inset-0 -z-10 dark:hidden">
@@ -55,7 +185,7 @@ export default function SingleAsset() {
                 <img
                   src={asset?.image}
                   alt="item"
-                  class="cursor-pointer rounded-2.5xl"
+                  class="cursor-pointer rounded-2.5xl w-[100%]"
                   data-bs-toggle="modal"
                   data-bs-target="#imageModal"
                 />
@@ -411,22 +541,21 @@ export default function SingleAsset() {
                       </div>
                     </div>
                   </div>
-
-                  <a
-                    href="#"
-                    data-bs-toggle="modal"
-                    data-bs-target="#placeBidModal"
-                    class="inline-block w-full rounded-full bg-accent py-3 px-8 text-center font-semibold text-white shadow-accent-volume transition-all hover:bg-accent-dark"
-                    onClick={(e) => placeBid(e)}
-                  >
-                    Place Bid
-                  </a>
+                  {placeBidButton}
                 </div>
               </div>
             </div>
           </div>
         </section>
       </main>
+      <BidModal
+        show={showBidModal}
+        onClose={onCloseModal}
+        initialValue={bidPrice}
+        onPriceChange={setBidPrice}
+        onPlaceBid={saveBid}
+        isProcessing={isProcessing}
+      />
     </Layout>
   );
 }

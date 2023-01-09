@@ -33,32 +33,13 @@ const authOptions: NextAuthOptions = {
             throw new Error("Invalid credentials.");
         }
 
-        // if(!isSamePassword(password,user.password)){
-        //     throw new Error("Password Incorrect");
-        // }
-
         const test = await bcrypt.compare(password, user.password).then((result) => {
             return result;
         });
 
-        console.log("test",test);
         if(!test){
             throw new Error("Password Incorrect");
         }
-
-        // bcrypt.compare(password, user.password, function (err, res) {
-        //     console.log("password",password)
-        //     console.log("hashedPassword",user.password)
-        //     if (err) {
-        //         throw new Error("Password Incorrect");
-        //     }
-        //     if (res) {
-        //         // return user;
-        //         // throw new Error("Password Correct");
-        //     } else {
-        //         throw new Error("Password Incorrect");
-        //     }
-        //   });
 
           return user;
         // if everything is fine
@@ -71,11 +52,11 @@ const authOptions: NextAuthOptions = {
     // signOut: '/auth/signout'
   },
   callbacks: {
-    jwt(params) {
+    async jwt(params) {
       // update token
-      if (params.user?.role) {
-        params.token.role = params.user.role;
-      }
+      // if (params.user?.role) {
+      //   params.token.role = params.user.role;
+      // }
       // return final_token
       return params.token;
     },

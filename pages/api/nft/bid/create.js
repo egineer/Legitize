@@ -36,12 +36,10 @@ apiRoute.post(async (req, res) => {
     });
     console.log(bids);
     if (bids) {
-      res
-        .status(401)
-        .json({
-          status: "failed",
-          message: "You have already placed a bid for this asset!",
-        });
+      res.status(200).json({
+        status: "failed",
+        message: "You have already placed a bid for this asset!",
+      });
     }
 
     const bid = await prisma.bid.create({

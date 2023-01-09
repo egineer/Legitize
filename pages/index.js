@@ -19,7 +19,7 @@ export default function Home({ web3Handler, account, marketplace, nft }) {
     // Load all unsold items
     const itemCount = await marketplace.itemCount();
     const tempItems = [];
-    for (let i = 3; i <= itemCount; i++) {
+    for (let i = 1; i <= itemCount; i++) {
       const item = await marketplace.Items(i);
       console.log("item", item);
       if (!item.sold) {
@@ -86,7 +86,7 @@ export default function Home({ web3Handler, account, marketplace, nft }) {
       <main>
         <HeroBanner />
         <CollectionsSection />
-        <FeaturedItemsSection items={items} />
+        {items.length ? <FeaturedItemsSection items={items} /> : ""}
         <PopularSellers />
       </main>
     </Layout>
